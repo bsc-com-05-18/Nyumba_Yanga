@@ -56,8 +56,10 @@ Route::namespace('Landlord')->prefix('landlord')->name('landlord.')->group(funct
             Route::get('home','HomeController@index')->name('home');
         });
 
-        Route::view('/upload','landlord.upload');
-        Route::post('/image/upload', 'ImageController@upload')->name('upload');
+        // Route::view('/upload','landlord.upload');
+        // Route::post('/image/upload', 'ImageController@upload')->name('upload');
+        Route::get('image-upload', [ImageController::class, 'create'])->name('image.create');
+        route::post('image-upload', [ImageController::class, 'store'])->name('image.store');
 
         Route::get('/myproperties', [App\Http\Controllers\Landlord\PropertiesController::class, 'index'])->name('myproperties');
 

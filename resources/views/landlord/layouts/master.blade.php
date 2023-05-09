@@ -71,7 +71,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="productUpload">
+          <a class="nav-link text-white" href="upload">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="fa-solid fa-square-plus"></i>
             </div>

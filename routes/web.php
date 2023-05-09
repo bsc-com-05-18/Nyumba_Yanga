@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Https\Controllers\Auth\LoginController;
-use App\Http\Controllers\Landlord\ProductController;
+use App\Http\Controllers\Landlord\ImageController;
 
 // use App\Http\Controllers\Landlord\AuthenticatedSessionController;
 
@@ -55,16 +55,9 @@ Route::namespace('Landlord')->prefix('landlord')->name('landlord.')->group(funct
         Route::middleware('landlord')->group(function(){
             Route::get('home','HomeController@index')->name('home');
         });
-        Route::post('/upload', [App\Http\Controllers\Landlord\ProductController::class, 'saveproduct']);
 
-        //diplay,edit and delete product by admin/landlord
-        Route::get('/editproperties', [App\Http\Controllers\Landlord\ProductController::class, 'editProductTable']);
-        Route::get('/editproduct/{id}', [App\Http\Controllers\Landlord\ProductController::class, 'product']);
-        Route::put('/update/{id}', [App\Http\Controllers\Landlord\ProductController::class, 'updated']);
-        Route::get('/deleteproduct/{id}', [App\Http\Controllers\Landlord\ProductController::class, 'removeProperty']);
-
-        Route::get('/productUpload', [App\Http\Controllers\Landlord\ProductController::class, 'index']);
-
+        Route::view('/upload','landlord.upload');
+        Route::post('/image/upload', 'ImageController@upload')->name('upload');
 
         Route::get('/myproperties', [App\Http\Controllers\Landlord\PropertiesController::class, 'index'])->name('myproperties');
 
@@ -75,8 +68,6 @@ Route::namespace('Landlord')->prefix('landlord')->name('landlord.')->group(funct
         Route::get('/tenant', [App\Http\Controllers\Landlord\TenantController::class, 'index'])->name('tenant');
 
         Route::get('/property', [App\Http\Controllers\Landlord\PropertyController::class, 'index'])->name('property');
-
-        Route::get('/addproperties', [App\Http\Controllers\Landlord\addpropertiesController::class, 'index'])->name('addproperties');
 
         Route::post('logout','Auth\AuthenticatedSessionController@destroy')->name('logout');
 

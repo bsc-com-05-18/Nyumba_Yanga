@@ -27,7 +27,7 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md bg-#0CAF12 shadow-sm opacity-75 mb-0"  style="background: #0CAF12;">
+        <nav class="navbar navbar-expand-md bg-#0CAF12 shadow-sm mb-0"  style="background: #0CAF12;">
             <div class="container">
                 <a class="navbar-brand text-light" href="{{ url('/') }}">
                     <img src="{{ asset('images/logo.png')}}" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
@@ -43,7 +43,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                <a class="nav-link active text-light" aria-current="page" href="#">HOME</a>
+                <a class="nav-link active text-light" aria-current="page" href="welcome">HOME</a>
                 </li>
                 <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -52,11 +52,11 @@
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="sell">FOR SALE</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">FOR RENT </a></li>
+                    <li><a class="dropdown-item" href="rent">FOR RENT </a></li>
                 </ul>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link text-light" href="contacts">CONTACTS</a>
+                <a class="nav-link text-light" href="contacts">ABOUT</a>
                 </li>
                 <li class="nav-item">
                     <a href="option">
@@ -78,30 +78,30 @@
     @yield('footer')
   <footer class="main-footer">
     <hr>
-    <div class="container-fluid opacity-50" style="background-color: #0CAF12;">
+    <div class="container-fluid" style="background-color: #0CAF12;">
             <div class="row justify-content-center text-center text-light">
                 <div class="col-md-4">
                     <div class="footer-copyright">
-                        <p>Landlord Portal</p>
-                        <p>Tenant Portal</p>
-                        <p>Log in</p>
+                        <a href="{{ route('landlord.landlordlogin') }}" class=" text-white text-decoration-none">Landlord Portal</a><br>
+                        <a href="{{ route('login') }}" class=" text-white text-decoration-none">Tenant Portal</a><br>
+                        <a href="{{ route('option') }}" class=" text-white text-decoration-none">Log in</a>
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <div class="footer-copyright">
-                        <p>Properties</p>
-                        <p>Registration</p>
-                        <p>Make payments</p>
+                        <a href="{{ route('sell') }}" class=" text-white text-decoration-none">Properties</a><br>
+                        <a href="{{ route('option') }}" class=" text-white text-decoration-none">Registration</a><br>
+                        <a href="{{ route('login') }}" class=" text-white text-decoration-none">Make payments</a>
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <div class="footer-copyright">
-                    <p><i class="fa-brands fa-facebook"></i> Nyumba Yanga</p>
-                        <p><i class="fa-brands fa-twitter"></i> Nyumba Yanga</p>
-                        <p><i class="fa-brands fa-square-instagram"></i> nyumba_yanga</p>
-                        <p><i class="fa-solid fa-envelope"></i>  nyumba-yanga@gmail.com</p>                    
+                        <a href="#" class=" text-white text-decoration-none"><i class="fa-brands fa-facebook" style="color: #3b5998;"></i> Nyumba Yanga</a><br>
+                        <a href="#" class=" text-white text-decoration-none"><i class="fa-brands fa-twitter opacity-100" style="color: #1DA1F2;"></i> Nyumba Yanga</a><br>
+                        <a href="#" class=" text-white text-decoration-none"><i class="fa-brands fa-square-instagram" style="color: #E1306C;"></i> nyumba_yanga</a><br>
+                        <a href="#" class=" text-white text-decoration-none ms-5"><i class="fa-solid fa-envelope" style="color: #FD1D1D;"></i>  nyumba-yanga@gmail.com</a>    
                     </div>
                 </div>
                 <div class="footer-copyright">

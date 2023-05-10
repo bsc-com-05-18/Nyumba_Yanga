@@ -5,7 +5,7 @@
       <div class="row justify-content-center">
         <div class="col-md-6">
             <div>
-                <h6 class="text-uppercase mx-5" style="font-size:24px; font-weight: bold;">for sale</h6>
+                <h6 class="text-uppercase mx-5" style="font-size:24px; font-weight: bold;">for rent</h6>
             </div>
         </div>
 

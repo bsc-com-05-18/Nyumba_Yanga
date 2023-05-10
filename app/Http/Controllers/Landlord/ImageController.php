@@ -17,11 +17,14 @@ class ImageController extends Controller
         $request->validate([
             'title' => 'required',
             'location' => 'required',
+            'description' => 'required',
+            'price' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         
         $imageName = time().'.'.$request->image->extension();
         $request->image->move(public_path('images'), $imageName);
+
 
         $image = new Image();
         $image->title = $request->title;

@@ -20,6 +20,7 @@ class CreateImagesTable extends Migration
             $table->string('description');
             $table->integer('price');
             $table->string('image');
+            $table->string('name');
             $table->timestamps();
         });
     }

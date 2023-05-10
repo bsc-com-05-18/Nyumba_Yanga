@@ -14,6 +14,6 @@ class Image extends Model
         'description',
         'price',
         'image',
-
         ];
+
 }

@@ -26,6 +26,9 @@ Route::get('/option', [App\Http\Controllers\OptionController::class, 'index'])->
 
 Route::get('/sell', [App\Http\Controllers\SellController::class, 'index'])->name('sell');
 
+Route::get('/rent', [App\Http\Controllers\RentController::class, 'index'])->name('rent');
+
+
 Route::get('/contacts', [App\Http\Controllers\ContactsController::class, 'index'])->name('contacts');
 
 

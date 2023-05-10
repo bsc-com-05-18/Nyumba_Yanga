@@ -48,6 +48,7 @@
 </div>
 @endsection
 @section('footer')
+
 <footer class="main-footer">
     <hr>
         <div class="row">

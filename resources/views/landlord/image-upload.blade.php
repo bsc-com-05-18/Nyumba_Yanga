@@ -36,7 +36,6 @@
     <div class="card-body mx-auto justify-content-center">
         <form method="POST" action="image-upload" enctype="multipart/form-data">
             @csrf
- 
             <div class="row">
                 <div class="col-lg-6 col-md-12">
                     <div class="input-group input-group-outline my-3">
@@ -44,58 +43,63 @@
                         @if ($errors->has('title'))
                         <div class="invalid-feedback">{{  $errors->first('title') }}</div>
                         @endif
-                        </div>
                     </div>
                 </div>
-                
-            </div>
-            <div class="row">
-                <div class="col-lg-6 col-md-12">
-                    <div class="input-group input-group-outline my-3">
+                <div class="col-lg-6 col-md-12 mt-3">
+                    <div class="input-group input-group-outline mb-3">
                         <input type="text" name="location" id="location" placeholder="Location" class="form-control{{  $errors->has('location') ? ' is-invalid' : '' }}" required>
                         @if ($errors->has('location'))
                         <div class="invalid-feedback">{{  $errors->first('location') }}</div>
                         @endif
-                        </div>
                     </div>
                 </div>
+            </div>
+            <div class="row">
                 <div class="col-lg-6 col-md-12">
                     <div class="input-group input-group-outline my-3">
                         <input type="text" name="description" id="description" placeholder="Decription" class="form-control{{  $errors->has('description') ? ' is-invalid' : '' }}" required>
                         @if ($errors->has('description'))
                         <div class="invalid-feedback">{{  $errors->first('description') }}</div>
                         @endif
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-12">
-                    <div class="input-group input-group-outline my-3">
-                        <input type="number" name="price" id="price" placeholder="Price" class="form-control{{  $errors->has('price') ? ' is-invalid' : '' }}" required>
-                        @if ($errors->has('price'))
-                        <div class="invalid-feedback">{{  $errors->first('price') }}</div>
-                        @endif
-                        </div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12 mt-3">
                     <div class="input-group input-group-outline mb-3">
+                        <input type="number" name="price" id="price" placeholder="Price" class="form-control{{  $errors->has('price') ? ' is-invalid' : '' }}" required>
+                        @if ($errors->has('price'))
+                        <div class="invalid-feedback">{{  $errors->first('price') }}</div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <div class="input-group input-group-outline my-3">
                         <input required type="file" name="image" id="image" class="form-control{{  $errors->has('image') ? ' is-invalid' : '' }}" required>
                         @if ($errors->has('image'))
                         <div class="invalid-feedback">{{  $errors->first('image') }}</div>
                         @endif
                     </div>
                 </div>
-                <!-- <div class="col-lg-6 col-md-12 mt-3">
-                    <div class="input-group input-group-outline mb-3">
-                        <input required type="file" name="image" id="image" class="form-control{{  $errors->has('image') ? ' is-invalid' : '' }}" required>
-                        @if ($errors->has('image'))
-                        <div class="invalid-feedback">{{  $errors->first('image') }}</div>
-                        @endif
+                <div class="col-lg-6 col-md-12">
+                    <div class="input-group input-group-outline my-3">
+                        <select class="form-select text-muted px-3" id="options" name="options" aria-label="Default select example" required>
+                            <option value="" selected>Choose an action</option>
+                            <option value="sell">For Sale</option>
+                            <option value="rent">For Rent</option>
+                            @if ($errors->has('options'))
+                            <div class="invalid-feedback">{{  $errors->first('options') }}</div>
+                            @endif
+                        </select>
                     </div>
-                </div> -->
+                </div>
             </div>
-           
-                <div class="row">
+                <div class="row mx-auto justify-content-center">
+                    <div class="col-md-6">
+                        <div>
+                            <button type="" class="btn bg-gradient-primary w-120 my-4 mb-2">Reset</button>
+                        </div>
+                    </div>
                     <div class="col-md-6">
                         <div>
                             <button type="submit" class="btn bg-gradient-success w-120 my-4 mb-2">Add</button>

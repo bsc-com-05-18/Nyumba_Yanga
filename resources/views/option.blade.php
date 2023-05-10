@@ -47,18 +47,4 @@
     </div>
 </div>
 @endsection
-@section('footer')
 
-<footer class="main-footer">
-    <hr>
-        <div class="row">
-            <div class="col-sm">
-                <p class="text-center text-muted text-sm mt-auto">
-                    Copyright &copy;  2023 Nyumba Yanga Real Estate System | All Rights Reserved. <br>
-                    Developed and Designed by Nyumba Yanga Agency.
-                </p>
-            </div>
-        </div>
-
-  </footer>
-@endsection

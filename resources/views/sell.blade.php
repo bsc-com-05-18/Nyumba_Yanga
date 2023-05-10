@@ -160,13 +160,7 @@
 </div>
 @endsection
 
-@section('footer')
-               
-@endsection
 
-@section('scripts')
-               
-@endsection
 
 
 

@@ -21,6 +21,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// HOME PAGE
+
 Route::get('/option', [App\Http\Controllers\OptionController::class, 'index'])->name('option');
 
 

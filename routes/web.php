@@ -24,6 +24,12 @@ Route::get('/', function () {
 });
 
 
+//update product and save route
+Route::get('/edit/{id}', [PropertyController::class, 'updateform']);
+Route::put('/update/{id}',[PropertyController::class, 'update']);
+//delete property route
+
+
 
 // HOME PAGE
 

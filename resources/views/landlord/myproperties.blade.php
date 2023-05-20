@@ -13,7 +13,7 @@
 @section('content')
 <div class="container-fluid">
   <!--  -->
-  
+
       <!--  -->
       <div class="card-body px-0 pb-2">
               <div class="table-responsive">
@@ -29,7 +29,20 @@
                     </tr>
                   </thead>
                   <tbody>
+                    @foreach ($data as $row)
                     <tr>
+                      <td>{{ $row->title }}</td>
+                      <td>{{ $row->location }}</td>
+                      <td>{{ $row->description }}</td>
+                      <td>{{ $row->price }}</td>
+                      <td>{{ $row->image }}</td>
+                      <td>
+
+                       <a href="{{url('edit/'.$row->id)}}" type="button" class="btn text-white btn-success">EDIT </a>
+                       <a href="{{url('delete/'.$row->id)}}" type="button"class="btn text-white btn-danger">DELETE</a>
+                      </td>
+
+                    @endforeach
                     </tr>
                   </tbody>
                 </table>
@@ -39,11 +52,11 @@
 @endsection
 
 @section('footer')
-               
+
 @endsection
 
 @section('scripts')
-               
+
 @endsection
 
 

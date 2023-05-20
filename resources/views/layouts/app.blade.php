@@ -27,7 +27,7 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md bg-#0CAF12 shadow-sm mb-0"  style="background: #0CAF12;">
+        <nav class="navbar navbar-expand-md bg-#027606 shadow-sm mb-0"  style="background: #027606;">
             <div class="container">
                 <a class="navbar-brand text-light" href="{{ url('/') }}">
                     <img src="{{ asset('images/logo.png')}}" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
@@ -39,7 +39,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    
+
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
@@ -64,7 +64,7 @@
                     </a>
                 </li>
                         <!-- Authentication Links -->
-                    
+
                     </ul>
                 </div>
             </div>
@@ -78,7 +78,7 @@
     @yield('footer')
   <footer class="main-footer">
     <hr>
-    <div class="container-fluid" style="background-color: #0CAF12;">
+    <div class="container-fluid" style="background-color: #027606;">
             <div class="row justify-content-center text-center text-light">
                 <div class="col-md-4 mt-3 mb-4">
                     <div class="footer-copyright">
@@ -101,14 +101,14 @@
                         <a href="#" class="text-white text-decoration-none" style="margin: 10px;"><i class="fa-brands fa-facebook" style="color: #3b5998;"></i> Nyumba Yanga</a><br>
                         <a href="#" class=" text-white text-decoration-none"><i class="fa-brands fa-twitter opacity-100" style="color: #1DA1F2;"></i> Nyumba Yanga</a><br>
                         <a href="#" class=" text-white text-decoration-none"><i class="fa-brands fa-square-instagram" style="color: #E1306C;"></i> nyumba_yanga</a><br>
-                        <a href="#" class=" text-white text-decoration-none ms-5"><i class="fa-solid fa-envelope" style="color: #FD1D1D;"></i>  nyumba-yanga@gmail.com</a>    
+                        <a href="#" class=" text-white text-decoration-none ms-5"><i class="fa-solid fa-envelope" style="color: #FD1D1D;"></i>  nyumba-yanga@gmail.com</a>
                     </div>
                 </div>
                 <div class="footer-copyright">
                     <p class="text-center text-sm mt-auto">
                         Copyright &copy;  2023 Nyumba Yanga Real Estate System | All Rights Reserved. <br>
                         Developed and Designed by Nyumba Yanga Agency.
-                    </p>                                      
+                    </p>
                     </div>
 
             </div>
@@ -124,6 +124,6 @@
   <script src="{{ asset('assets/js/plugins/chartjs.min.js')}}"></script>
   <script src="{{ asset('assets/js/material-dashboard.min.js?v=3.1.0')}}"></script>
 
- 
+
 </body>
 </html>

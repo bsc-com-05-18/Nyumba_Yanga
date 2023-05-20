@@ -24,10 +24,6 @@ Route::get('/', function () {
 });
 
 
-//update product
-Route::get('/edit/{id}', [PropertyController::class, 'updateform']);
-Route::put('/update/{id}',[PropertyController::class, 'update']);
-Route::get('/delete/{id}',[PropertyController::class, 'removeProperty']);
 
 // HOME PAGE
 
@@ -70,16 +66,15 @@ Route::namespace('Landlord')->prefix('landlord')->name('landlord.')->group(funct
             Route::get('home','HomeController@index')->name('home');
         });
 
-        // Route::view('/upload','landlord.upload');
-        // Route::post('/image/upload', 'ImageController@upload')->name('upload');
+
+        // adding an image
         Route::get('image-upload', [ImageController::class, 'create'])->name('image.create');
         route::post('image-upload', [ImageController::class, 'store'])->name('image.store');
-        
-        
+
+
 
         Route::get('/myproperties', [App\Http\Controllers\Landlord\PropertyController::class, 'index'])->name('myproperties');
 
-        // Route::post('/property/{id}/edit', [App\Http\Controllers\Landlord\PropertyController::class, 'editProperty'])->name('editproperties');
 
         Route::get('/rent', [App\Http\Controllers\Landlord\RentController::class, 'index'])->name('rent');
 

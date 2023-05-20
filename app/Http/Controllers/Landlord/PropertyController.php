@@ -9,15 +9,13 @@ use App\Models\Image;
 
 class PropertyController extends Controller
 {
-   
+
     public function index()
     {
-  
-        return view('landlord.myproperties');
-    }
-      
-    
-
-
+        $data = Image::all();
+        return view('landlord.myproperties', compact('data'));
     }
 
+
+
+}

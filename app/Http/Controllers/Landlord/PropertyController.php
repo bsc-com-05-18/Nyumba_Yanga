@@ -17,7 +17,7 @@ class PropertyController extends Controller
         return view('landlord.myproperties', compact('data'));
     }
 
-     //getting update form
+            //getting update form
      public function updateform($id)
 
      {
@@ -25,17 +25,26 @@ class PropertyController extends Controller
          return view('landlord.editproperties',compact('property'));
      }
      
-          // storing updated property into database
+           // storing updated property into database
      public function update(Request $request,$id){
          $property = Image::find($id);
          $property->title = $request->title;
          $property->location = $request->location;
          $property->description = $request->description;
          $property->price = $request->price;
-     
          $property->update();
          return redirect()->route('landlord.myproperties', $property->id);
      }
+
+
+           //delete or remove property by landlord
+     public function removeProperty($id){
+        $property = Image::find($id);
+        $property ->delete($id);
+        return redirect()->route('landlord.myproperties', $property->id);
+
+        
+    }
 
 
 

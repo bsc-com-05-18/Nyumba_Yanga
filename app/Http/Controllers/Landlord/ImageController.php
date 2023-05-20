@@ -8,6 +8,8 @@ use App\Models\Image;
 
 class ImageController extends Controller
 {
+
+    //upload property
     public function create()
     {
         return view('landlord.image-upload');
@@ -34,6 +36,8 @@ class ImageController extends Controller
         $image->image = $imageName;
         $image->save();
 
-        return redirect()->back()->with('success', 'Image has been uploaded successfully.');
+        return redirect()->route('landlord.myproperties', $image->id);
     }
+    
+
 }

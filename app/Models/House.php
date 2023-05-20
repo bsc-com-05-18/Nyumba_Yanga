@@ -5,8 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Image extends Model
+class House extends Model
 {
+    use HasFactory;
     use HasFactory;
     protected $table='images';
     protected $primaryKey='id';
@@ -21,5 +22,4 @@ class Image extends Model
         {
             return base64_encode($this->image);
         }
-
 }

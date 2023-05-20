@@ -81,7 +81,7 @@
                         @endif
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-12">
+                <!-- <div class="col-lg-6 col-md-12">
                     <div class="input-group input-group-outline my-3">
                         <select class="form-select text-muted px-3" id="options" name="options" aria-label="Default select example" required>
                             <option value="" selected>Choose an action</option>
@@ -92,7 +92,7 @@
                             @endif
                         </select>
                     </div>
-                </div>
+                </div> -->
             </div>
                 <div class="row mx-auto justify-content-center">
                     <div class="col-md-6">

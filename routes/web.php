@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Https\Controllers\Auth\LoginController;
 use App\Http\Controllers\Landlord\ImageController;
+use App\Http\Controllers\Landlord\PropertyController;
+use App\Http\Controllers\HouseController;
 
 // use App\Http\Controllers\Landlord\AuthenticatedSessionController;
 
@@ -20,6 +22,12 @@ use App\Http\Controllers\Landlord\ImageController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+//update product
+Route::get('/edit/{id}', [PropertyController::class, 'updateform']);
+Route::put('/update/{id}',[PropertyController::class, 'update']);
+Route::get('/delete/{id}',[PropertyController::class, 'removeProperty']);
 
 // HOME PAGE
 
@@ -56,6 +64,7 @@ Route::namespace('Landlord')->prefix('landlord')->name('landlord.')->group(funct
         Route::get('register','RegisteredLandlordController@create')->name('register');
         Route::post('register','RegisteredLandlordController@store')->name('register');
 
+
     });
         Route::middleware('landlord')->group(function(){
             Route::get('home','HomeController@index')->name('home');
@@ -65,8 +74,12 @@ Route::namespace('Landlord')->prefix('landlord')->name('landlord.')->group(funct
         // Route::post('/image/upload', 'ImageController@upload')->name('upload');
         Route::get('image-upload', [ImageController::class, 'create'])->name('image.create');
         route::post('image-upload', [ImageController::class, 'store'])->name('image.store');
+        
+        
 
-        Route::get('/myproperties', [App\Http\Controllers\Landlord\PropertiesController::class, 'index'])->name('myproperties');
+        Route::get('/myproperties', [App\Http\Controllers\Landlord\PropertyController::class, 'index'])->name('myproperties');
+
+        // Route::post('/property/{id}/edit', [App\Http\Controllers\Landlord\PropertyController::class, 'editProperty'])->name('editproperties');
 
         Route::get('/rent', [App\Http\Controllers\Landlord\RentController::class, 'index'])->name('rent');
 
@@ -78,5 +91,9 @@ Route::namespace('Landlord')->prefix('landlord')->name('landlord.')->group(funct
 
         Route::post('logout','Auth\AuthenticatedSessionController@destroy')->name('logout');
 
+        //for rent
+
+        Route::get('/houses', [HouseController::class, 'index'])->name('houses.index');
+        Route::view('/house-cards', 'houses.index')->name('house-cards');
 
 });

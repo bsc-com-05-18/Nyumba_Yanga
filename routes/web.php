@@ -28,6 +28,9 @@ Route::get('/', function () {
 Route::get('/edit/{id}', [PropertyController::class, 'updateform']);
 Route::put('/update/{id}',[PropertyController::class, 'update']);
 
+//view property details 
+Route::get('/property_details/{id}',[PropertyController::class, 'propertyDetail']);
+
 //delete property route
 Route::get('/delete/{id}',[PropertyController::class, 'removeProperty']);
 

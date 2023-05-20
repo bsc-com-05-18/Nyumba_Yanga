@@ -22,7 +22,8 @@
         <!-- displaying property -->
         <div class="row mt-1 justify-content-center">
             @foreach($data as $try)
-            <div class="col-lg-3 col-md-12 mt-4 mb-1">
+
+           <a href="{{url('property_details',$try->id)}}"> <div class="col-lg-3 col-md-12 mt-4 mb-1">
               <div class="card z-index-2 ">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
                   <div class="bg-gray-400 shadow-primary border-radius-lg py-2 px-2 pe-1 text-center">
@@ -45,6 +46,7 @@
                 </div>
               </div>
             </div>
+            </a>
             @endforeach
 
 

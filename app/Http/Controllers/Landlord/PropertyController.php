@@ -36,15 +36,19 @@ class PropertyController extends Controller
          return redirect()->route('landlord.myproperties', $property->id);
      }
 
-
            //delete or remove property by landlord
      public function removeProperty($id){
         $property = Image::find($id);
         $property ->delete($id);
         return redirect()->route('landlord.myproperties', $property->id);
-
-        
     }
+
+           //display property details
+     public function propertyDetail($id)
+     {
+         $data = Image::find($id);
+         return view('tenant.viewPropertyDetail',compact('data'));
+     }
 
 
 

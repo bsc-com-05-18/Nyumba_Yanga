@@ -8,6 +8,8 @@ use App\Models\Image;
 
 class ImageController extends Controller
 {
+
+    //upload property
     public function create()
     {
         return view('landlord.image-upload');
@@ -19,7 +21,7 @@ class ImageController extends Controller
             'location' => 'required',
             'description' => 'required',
             'price' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5000',
         ]);
         
         $imageName = time().'.'.$request->image->extension();
@@ -34,6 +36,8 @@ class ImageController extends Controller
         $image->image = $imageName;
         $image->save();
 
-        return redirect()->back()->with('success', 'Image has been uploaded successfully.');
+        return redirect()->route('landlord.myproperties', $image->id);
     }
+    
+
 }

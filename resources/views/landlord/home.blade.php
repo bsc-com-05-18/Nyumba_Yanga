@@ -13,7 +13,7 @@
             <div class="card-body">
             <div class="d-flex align-items-center justify-content-center">
                 <h6 class="mb-0 text-uppercase">properties</h6>
-                <h2 class="ms-auto">5</h2>
+                <!-- <h2 class="ms-auto">5</h2> -->
               </div>
               
             </div>
@@ -29,7 +29,7 @@
             <div class="card-body">
               <div class="d-flex align-items-center justify-content-center">
                 <h6 class="mb-0 text-uppercase">payments</h6>
-                <h2 class="ms-auto">MWK5,000.00</h2>
+                <!-- <h2 class="ms-auto">MWK5,000.00</h2> -->
               </div>
               
               
@@ -48,7 +48,7 @@
             <div class="card-body">
             <div class="d-flex align-items-center justify-content-center">
                 <h6 class="mb-0 text-uppercase">maintenance</h6>
-                <h2 class="ms-auto">5</h2>
+                <!-- <h2 class="ms-auto">5</h2> -->
               </div>
               
             </div>
@@ -64,7 +64,7 @@
             <div class="card-body">
             <div class="d-flex align-items-center justify-content-center">
                 <h6 class="mb-0 text-uppercase">tenants</h6>
-                <h2 class="ms-auto">5</h2>
+                <!-- <h2 class="ms-auto">5</h2> -->
               </div>
               
             </div>

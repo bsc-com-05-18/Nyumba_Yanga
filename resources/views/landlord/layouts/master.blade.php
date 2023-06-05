@@ -83,7 +83,7 @@
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="fa-solid fa-house-chimney"></i>
             </div>
-            <span class="nav-link-text ms-1">Properties</span>
+            <span class="nav-link-text ms-1">My Properties</span>
             <!-- <i class="fa-solid fa-square-plus ms-auto"></i> -->
           </a>
         </li>        
@@ -104,7 +104,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="tenant">
+          <a class="nav-link text-white " href="post">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="fa-solid fa-users"></i>
             </div>
@@ -121,9 +121,9 @@
         </li> -->
         <br>
         <li class="nav-item mt-5">
-          <a class="nav-link text-white " href="{{ route('landlord.logout') }}" onclick="event.preventDefault();
+          <a class="nav-link text-white " href="{{ route('logout') }}" onclick="event.preventDefault(); if(confirm('Are you sure you want to log out?'))
               document.getElementById('logout-form').submit();">
-                  <form id="logout-form" action="{{ route('landlord.logout') }}" method="POST" class="d-none">
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                       @csrf
                   </form>
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -159,17 +159,17 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fa fa-user"></i> 
-                {{ Auth::guard('landlord')->user()->name }}
+                {{ Auth::guard('web')->user()->name }}
 
                 </a>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{{ route('landlord.logout') }}"
-                      onclick="event.preventDefault();
+                  <a class="dropdown-item" href="{{ route('logout') }}"
+                      onclick="event.preventDefault(); if(confirm('Are you sure you want to log out?'))
                                     document.getElementById('logout-form').submit();">
                       {{ __('Logout') }}
                   </a>
 
-                  <form id="logout-form" action="{{ route('landlord.logout') }}" method="POST" class="d-none">
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                       @csrf
                   </form>
               </div>

@@ -21,8 +21,15 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    // Tenant Dashboard
     public function index()
     {
-        return view('home');
+        return view('tenant.home');
+    }
+
+    // Landlord Dashboard
+    public function landlordHome()
+    {
+        return view('landlord.home');
     }
 }

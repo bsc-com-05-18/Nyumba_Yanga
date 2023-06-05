@@ -63,6 +63,18 @@
 
                         <div class="form-row mb-2">
                             <div class="col-lg-7">
+                                <input id="accNumber" type="number" class="form-control @error('accNumber') is-invalid @enderror" placeholder="Account Number" name="accNumber" value="{{ old('accNumber') }}" required autocomplete="accNumber" autofocus>
+
+                                @error('accNumber')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-row mb-2">
+                            <div class="col-lg-7">
                                 <input id="occupation" type="text" class="form-control @error('occupation') is-invalid @enderror" placeholder="Occupation" name="occupation" value="{{ old('occupation') }}" required autocomplete="occupation" autofocus>
 
                                 @error('occupation')

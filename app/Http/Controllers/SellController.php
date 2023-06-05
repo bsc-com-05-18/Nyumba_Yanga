@@ -1,15 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Image;
 
 
 use Illuminate\Http\Request;
 
 class SellController extends Controller
+
 {
  
     public function index()
     {
-        return view('sell');
+        $data = Image::all();
+        return view('sell',compact('data'));
     }
 }

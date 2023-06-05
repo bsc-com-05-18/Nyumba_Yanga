@@ -23,23 +23,29 @@
        
       </div>
       <div class="row mt-1 justify-content-center">
+        @foreach($data as $try)
         <div class="col-lg-3 col-md-12 mt-4 mb-1">
           <div class="card z-index-2 ">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
               <div class="bg-gray-400 shadow-primary border-radius-lg py-2 px-2 pe-1 text-center">
-              <img src="{{ asset('images/house2.jpg') }}" alt="" class="img-fluid">             
+              <img src="{{ asset('/images/'.$try->image) }}" alt="" class="img-fluid">             
               </div>
             </div>
             <div class="card-body">
-            <div class="d-flex align-items-center justify-content-center">
-                <h6 class="mb-0 text-uppercase">property 1</h6>
-                <h6 class="ms-auto"><i class="fa fa-ellipsis-v text-secondary"></i></h6>
+            <div class="">
+                <h5 class="mb-0 text-uppercase">{{ ($try->title) }}</h5>
+            </div>
+              <div class="">
+                  <h6 class="mb-0 text-uppercase">{{ ($try->description) }}</h6>
+               
+                <h6 class="mb-0 text-uppercase text-info">MWK{{ ($try->price) }}</h6>
               </div>
               
             </div>
           </div>
         </div>
-        <div class="col-lg-3 col-md-12 mt-4 mb-1">
+        @endforeach
+        <!-- <div class="col-lg-3 col-md-12 mt-4 mb-1">
           <div class="card z-index-2 ">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
               <div class="bg-gray-400 shadow-primary border-radius-lg py-2 px-2 pe-1 text-center">
@@ -155,7 +161,7 @@
               
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
 </div>
 @endsection

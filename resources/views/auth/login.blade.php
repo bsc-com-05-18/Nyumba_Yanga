@@ -8,7 +8,6 @@
                 </div>
                 <div class="col-lg-7 px-5 pt-3">
                     <h3 class="font-weight-bold py-3">NYUMBA YANGA REAL ESTATE SYSTEM</h3>
-                    <h4>Tenant Portal</h4>
                     <form method="POST" action="{{ route('login') }}">
                     @csrf
                         <div class="form-row" class="input-group input-group-outline mb-3">
@@ -75,7 +74,7 @@
                         <a href="#" class="my-3 p-2">Forgot Your Password?</a>
                         <strong>
                             <p class="my-2 p-2">Don't have an account? 
-                            <a href="register" class="text-success text-gradient font-weight-bolder">REGISTER HERE</a></p>
+                            <a href="option" class="text-success text-gradient font-weight-bolder">REGISTER HERE</a></p>
                         </strong>
                     </form>
                 </div>

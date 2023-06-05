@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -22,7 +23,9 @@ class User extends Authenticatable
         'last_name',
         'email',
         'phone',
+        'accNumber',
         'occupation',
+        'role',
         'password',
     ];
 
@@ -44,4 +47,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Interact with the user's first name
+     * 
+     * @param string $value
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute
+     */
+   
 }

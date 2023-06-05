@@ -64,7 +64,7 @@
         <li class="nav-item">
           <a class="nav-link text-white active bg-gradient-primary" href="home">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">dashboard</i>
+            <i class="fa-solid fa-house"></i>
             </div>
             <span class="nav-link-text ms-1">Dashboard</span>
           </a>
@@ -111,7 +111,8 @@
         </li>
         <br>
         <li class="nav-item mt-5">
-          <a class="nav-link text-white " href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+          <a class="nav-link text-white " href="{{ route('logout') }}" onclick="event.preventDefault(); if(confirm('Are you sure you want to log out?'))
+                    document.getElementById('logout-form').submit();">
           <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
               @csrf
           </form>
@@ -155,7 +156,7 @@
 
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="{{ route('logout') }}"
-                      onclick="event.preventDefault();
+                      onclick="event.preventDefault(); if(confirm('Are you sure you want to log out?'))
                                     document.getElementById('logout-form').submit();">
                       {{ __('Logout') }}
                   </a>

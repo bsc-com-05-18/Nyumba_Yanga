@@ -11,9 +11,10 @@
                 
                 <div class="card-body">
                     <h5 class="card-title text-uppercase text-dark" style="font-size: 24px;">nyumba yanga real estate system</h5>
+                    <h6 class="card-title text-uppercase text-dark" style="font-size: 18px;">register as</h6>
                     <div class="row justify-content-center">
                         <div class="col-lg-5 col-md-6 mt-4 mb-1">
-                        <a href="{{ route('landlord.login') }}">
+                        <a href="" class="text-decoration-none">
                             <div class="card z-index-2 text-dark">
                                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
                                 <div class="bg-gray-400 shadow-success border-radius-lg py-3 pe-1 text-center">
@@ -27,7 +28,7 @@
                             </a>
                         </div>
                         <div class="col-lg-5 col-md-6 mt-4 mb-1">
-                        <a href="{{ route('login') }}">
+                        <a href="{{ route('register') }}" class="text-decoration-none">
                             <div class="card z-index-2 text-dark">
                                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
                                 <div class="bg-gray-400 shadow-success border-radius-lg py-3 pe-1 text-center">

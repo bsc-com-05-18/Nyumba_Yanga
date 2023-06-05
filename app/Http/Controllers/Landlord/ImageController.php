@@ -23,7 +23,7 @@ class ImageController extends Controller
             'price' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5000',
         ]);
-        
+
         $imageName = time().'.'.$request->image->extension();
         $request->image->move(public_path('images'), $imageName);
 
@@ -38,6 +38,10 @@ class ImageController extends Controller
 
         return redirect()->route('landlord.myproperties', $image->id);
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 51972f69a7b3c113d56086794747302542085c3e
 
 }

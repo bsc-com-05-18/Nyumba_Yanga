@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Landlord\HomeController;
+use App\Http\Controllers\PropertyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/option', [App\Http\Controllers\LandingPage::class, 'option'])->name('option');
 Route::get('/rent', [App\Http\Controllers\LandingPage::class, 'rent'])->name('rent');
 Route::get('/sell', [App\Http\Controllers\LandingPage::class, 'sell'])->name('sell');
 Route::get('/contacts', [App\Http\Controllers\LandingPage::class, 'contacts'])->name('contacts');
@@ -28,7 +28,23 @@ Route::get('/contacts', [App\Http\Controllers\LandingPage::class, 'contacts'])->
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\Landlord\HomeController::class, 'index'])->middleware('auth');
+Route::namespace('Auth')->middleware('auth')->group(function(){
+   
+    Route::get('/home', [App\Http\Controllers\Landlord\HomeController::class, 'index']);
+    Route::get('/profile', [App\Http\Controllers\Landlord\HomeController::class, 'profile']);
+    Route::get('/addProperty', [App\Http\Controllers\PropertyController::class, 'index']);
+    Route::post('/uploadProperty',[App\Http\Controllers\PropertyController::class, 'store']);
 
-Route::get('post',[App\Http\Controllers\Landlord\HomeController::class, 'post']);
+    
+
+    // Worked but didnt pass the url
+    // Route::get('/addProperty', [App\Http\Controllers\MultipleImageController::class, 'index']);
+    // Route::get('save-multiple-image', [App\Http\Controllers\MultipleImageController::class, 'save']);
+
+
+
+    
+
+
+});
 

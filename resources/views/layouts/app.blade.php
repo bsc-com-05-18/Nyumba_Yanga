@@ -84,14 +84,14 @@
                     <div class="footer-copyright">
                         <a href="" class=" text-white text-decoration-none">Landlord Portal</a><br>
                         <a href="{{ route('login') }}" class=" text-white text-decoration-none">Tenant Portal</a><br>
-                        <a href="{{ route('option') }}" class=" text-white text-decoration-none">Log in</a>
+                        <a href="{{ route('login') }}" class=" text-white text-decoration-none">Log in</a>
                     </div>
                 </div>
 
                 <div class="col-md-4 mt-3 mb-4">
                     <div class="footer-copyright">
                         <a href="{{ route('sell') }}" class=" text-white text-decoration-none">Properties</a><br>
-                        <a href="{{ route('option') }}" class=" text-white text-decoration-none">Registration</a><br>
+                        <a href="{{ route('register') }}" class=" text-white text-decoration-none">Registration</a><br>
                         <a href="{{ route('login') }}" class=" text-white text-decoration-none">Make payments</a>
                     </div>
                 </div>

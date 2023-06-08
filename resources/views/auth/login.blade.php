@@ -74,7 +74,7 @@
                         <a href="#" class="my-3 p-2">Forgot Your Password?</a>
                         <strong>
                             <p class="my-2 p-2">Don't have an account? 
-                            <a href="option" class="text-success text-gradient font-weight-bolder">REGISTER HERE</a></p>
+                            <a href="register" class="text-success text-gradient font-weight-bolder">REGISTER HERE</a></p>
                         </strong>
                     </form>
                 </div>

@@ -26,8 +26,9 @@ class HomeController extends Controller
             }
         }
     }
-    public function post()
+    public function profile()
     {
-        return view('landlord.tenant');
+        return view('landlord.profile');
     }
+    
 }

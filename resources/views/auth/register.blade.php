@@ -9,7 +9,6 @@
         </div>
         <div class="col-lg-7 px-5 pt-3">
             <h3 class="font-weight-bold py-3">NYUMBA YANGA REAL ESTATE SYSTEM</h3>
-            <h4>Register As Tenant</h4>
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
 

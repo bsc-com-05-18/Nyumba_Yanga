@@ -12,6 +12,13 @@
 
 @section('content')
 <div class="container-fluid">
+@if(session('success'))
+        <div class="alert alert-dismissible alert-success">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <h4 class="alert-heading">Success!</h4>
+            <p class="mb-0">New property was added successfully!</p>
+        </div>
+        @endif
     <div class="row justify-content-center mx-auto text-dark">
         <div class="col-md-6">
             <div>
@@ -34,7 +41,7 @@
 
     </div>
     <div class="card-body mx-auto justify-content-center">
-        <form method="POST" action="image-upload" enctype="multipart/form-data">
+        <form method="POST" action="/uploadProperty" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-lg-6 col-md-12">
@@ -57,7 +64,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-12">
                     <div class="input-group input-group-outline my-3">
-                        <input type="text" name="description" id="description" placeholder="Decription" class="form-control{{  $errors->has('description') ? ' is-invalid' : '' }}" required>
+                        <input type="text" name="description" id="description" placeholder="Description" class="form-control{{  $errors->has('description') ? ' is-invalid' : '' }}" required>
                         @if ($errors->has('description'))
                         <div class="invalid-feedback">{{  $errors->first('description') }}</div>
                         @endif
@@ -68,6 +75,24 @@
                         <input type="number" name="price" id="price" placeholder="Price" class="form-control{{  $errors->has('price') ? ' is-invalid' : '' }}" required>
                         @if ($errors->has('price'))
                         <div class="invalid-feedback">{{  $errors->first('price') }}</div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <div class="input-group input-group-outline my-3">
+                        <input type="text" name="size" id="size" placeholder="Size" class="form-control{{  $errors->has('size') ? ' is-invalid' : '' }}" required>
+                        @if ($errors->has('size'))
+                        <div class="invalid-feedback">{{  $errors->first('size') }}</div>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 mt-3">
+                    <div class="input-group input-group-outline mb-3">
+                        <input type="text" name="address" id="address" placeholder="address" class="form-control{{  $errors->has('address') ? ' is-invalid' : '' }}" required>
+                        @if ($errors->has('address'))
+                        <div class="invalid-feedback">{{  $errors->first('address') }}</div>
                         @endif
                     </div>
                 </div>

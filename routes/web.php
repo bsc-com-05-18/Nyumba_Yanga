@@ -22,6 +22,7 @@ Route::get('/', function () {
 
 Route::get('/rent', [App\Http\Controllers\LandingPage::class, 'rent'])->name('rent');
 Route::get('/sell', [App\Http\Controllers\LandingPage::class, 'sell'])->name('sell');
+Route::get('/property-review', [App\Http\Controllers\LandingPage::class, 'details'])->name('property-review');
 Route::get('/contacts', [App\Http\Controllers\LandingPage::class, 'contacts'])->name('contacts');
 
 
@@ -34,6 +35,17 @@ Route::namespace('Auth')->middleware('auth')->group(function(){
     Route::get('/profile', [App\Http\Controllers\Landlord\HomeController::class, 'profile']);
     Route::get('/addProperty', [App\Http\Controllers\PropertyController::class, 'index']);
     Route::post('/uploadProperty',[App\Http\Controllers\PropertyController::class, 'store']);
+    Route::get('/myproperties', [App\Http\Controllers\PropertyController::class, 'display']);
+    Route::get('/product-images/{id}', [App\Http\Controllers\PropertyController::class, 'images'])->name('landlord.images');
+
+
+    Route::get('/edit/{id}', [PropertyController::class, 'updateform']);
+    Route::put('/update/{id}',[PropertyController::class, 'update']);
+    Route::get('/delete/{id}',[PropertyController::class, 'removeProperty']);
+
+    Route::get('/tenant/home', [App\Http\Controllers\Tenant\HomeController::class, 'index']);
+
+    Route::get('/tenant/profile', [App\Http\Controllers\Tenant\HomeController::class, 'profile']);
 
     
 

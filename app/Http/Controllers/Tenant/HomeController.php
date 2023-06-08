@@ -11,4 +11,8 @@ class HomeController extends Controller
     {
         return view('tenant.home');
     }
+    public function profile()
+    {
+        return view('tenant.profile');
+    }
 }

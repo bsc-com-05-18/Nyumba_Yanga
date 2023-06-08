@@ -15,39 +15,56 @@
   <!--  -->
 
       <!--  -->
-      <div class="card-body px-0 pb-2">
-              <div class="table-responsive">
-                <table class="table align-items-center mb-0">
-                  <thead>
+      <div class="col-md-12">
+            <h3>Property</h3>
+           
+            <table class="table table-striped">
+                <thead>
                     <tr>
-                      <th class="text-uppercase text-dark font-weight-bolder text-uppercase opacity-7">Property Name</th>
-                      <th class="text-uppercase text-dark font-weight-bolder text-uppercase opacity-7 ps-2">Location</th>
-                      <th class="text-center text-uppercase text-dark font-weight-bolder opacity-7">Description</th>
-                      <th class="text-uppercase text-dark font-weight-bolder text-uppercase opacity-7 ps-2">Price</th>
-                      <th class="text-center text-uppercase text-dark font-weight-bolder opacity-7">Image</th>
-                      <th class="text-center text-uppercase text-dark font-weight-bolder opacity-7">Action</th>
+                        <th>#</th>
+                        <th>Title</th>
+                        <th>Location</th>
+                        <th>Price</th>
+                        <th>Description</th>
+                        <th>Size</th>
+                        <th>Address</th>
+                        <th>Image</th>
+                        <th>Action</th>
                     </tr>
-                  </thead>
-                  <tbody>
-                    @foreach ($data as $row)
+                </thead>
+                <tbody>
+                    @php 
+                    $i=1;
+                    @endphp
+                    @forelse ($properties as $property )
+
+                        <tr>
+                            <td>{{$i++;}}</td>
+                            <td>{{$property->title}}</td>
+                            <td>{{$property->location}}</td>
+                            <td>{{$property->title}}</td>
+                            <td>{{$property->description}}</td>
+                            <td>{{$property->size}}</td>
+                            <td>{{$property->address}}</td>
+                            <td>
+                        <img src="{{ asset('/images/'.$property->image) }}" alt="" class="img-fluid">             
+                            </td>
+                            <td>
+                                <!-- <a href="product-images/{id}" type="button" class="btn text-white btn-info">View</a> -->
+                                <a href="{{url('edit/'.$property->id)}}" type="button" class="btn text-white btn-success">Edit</a>
+                                <a href="{{url('delete/'.$property->id)}}" type="button" class="btn text-white btn-danger">Delete</a>
+                            </td>
+
+                        </tr>
+
+                    @empty
                     <tr>
-                      <td>{{ $row->title }}</td>
-                      <td>{{ $row->location }}</td>
-                      <td>{{ $row->description }}</td>
-                      <td>{{ $row->price }}</td>
-                      <td>{{ $row->image }}</td>
-                      <td>
-
-                       <a href="{{url('edit/'.$row->id)}}" type="button" class="btn text-white btn-success">EDIT </a>
-                       <a href="{{url('delete/'.$row->id)}}" type="button"class="btn text-white btn-danger">DELETE</a>
-                      </td>
-
-                    @endforeach
+                        <td colspan="8" class="text-center">No Property yet!</td>
                     </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
 </div>
 @endsection
 

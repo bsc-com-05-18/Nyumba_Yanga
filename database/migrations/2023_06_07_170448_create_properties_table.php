@@ -18,7 +18,13 @@ class CreatePropertiesTable extends Migration
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->string('title');
+            $table->string('location');
+            $table->string('price');
+            $table->string('description');
+            $table->string('size');
+            $table->string('address');
             $table->string('image');
+            $table->string('status')->default('rent');
             $table->timestamps();
         });
     }

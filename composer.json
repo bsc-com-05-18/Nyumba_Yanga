@@ -13,6 +13,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
+        "munafio/chatify": "^1.6",
         "twilio/sdk": "^7.3"
     },
     "require-dev": {

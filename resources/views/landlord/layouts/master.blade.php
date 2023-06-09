@@ -96,11 +96,11 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="maintenance">
+          <a class="nav-link text-white " href="rent">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-            <i class="fa-sharp fa-solid fa-gears"></i>
+            <i class="fa-solid fa-comment-dots"></i>
             </div>
-            <span class="nav-link-text ms-1">Maintenance</span>
+            <span class="nav-link-text ms-1">Chat</span>
           </a>
         </li>
         <li class="nav-item">

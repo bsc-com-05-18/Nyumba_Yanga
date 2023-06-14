@@ -9,6 +9,7 @@
         </div>
         <div class="col-lg-7 px-5 pt-3">
             <h3 class="font-weight-bold py-3">NYUMBA YANGA REAL ESTATE SYSTEM</h3>
+            <h4>Register As Tenant</h4>
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
 
@@ -53,18 +54,6 @@
                                 <input id="phone" type="number" class="form-control @error('phone') is-invalid @enderror" placeholder="Phone Number" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
 
                                 @error('phone')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-row mb-2">
-                            <div class="col-lg-7">
-                                <input id="accNumber" type="number" class="form-control @error('accNumber') is-invalid @enderror" placeholder="Account Number" name="accNumber" value="{{ old('accNumber') }}" required autocomplete="accNumber" autofocus>
-
-                                @error('accNumber')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

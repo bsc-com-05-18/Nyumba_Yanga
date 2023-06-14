@@ -23,139 +23,49 @@
        
       </div>
       <div class="row mt-1 justify-content-center">
+        @foreach($data as $try)
+        <a href="">
+          
+        </a>
         <div class="col-lg-3 col-md-12 mt-4 mb-1">
           <div class="card z-index-2 ">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
               <div class="bg-gray-400 shadow-primary border-radius-lg py-2 px-2 pe-1 text-center">
-              <img src="{{ asset('images/house2.jpg') }}" alt="" class="img-fluid">             
+              <img src="{{ asset('/images/'.$try->image) }}" alt="" class="img-fluid">             
               </div>
             </div>
             <div class="card-body">
-            <div class="d-flex align-items-center justify-content-center">
-                <h6 class="mb-0 text-uppercase">property 1</h6>
-                <h6 class="ms-auto"><i class="fa fa-ellipsis-v text-secondary"></i></h6>
+              <div class="row">
+                <div class="col-lg-7">
+                  <h5 class="card-title text-uppercase">{{ ($try->title) }}</h5>
+                </div>
+                <div class="col-lg-5">
+                  <h5 class="card-title text-end text-info">MWK{{ ($try->price) }}</h5>
+                </div>
               </div>
+              <h5 class="card-text"><i class="fa-sharp fa-solid fa-location-dot"></i> {{ ($try->location) }}</h5>
+              <h5 class="card-text">{{ ($try->description) }}</h5>
+                            <div class="row">
+                <div class="col-lg-7">
+                  <ul class="list-inline">
+                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                </ul>                
+              </div>
+                <div class="col-lg-5">
+                <p>Reviews (24)</p>
+                </div>
+              </div>
+              <a href="{{ url('viewproperty/'.$try->id) }}" class="btn btn-success">View More Details</a>
               
             </div>
           </div>
         </div>
-        <div class="col-lg-3 col-md-12 mt-4 mb-1">
-          <div class="card z-index-2 ">
-            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-              <div class="bg-gray-400 shadow-primary border-radius-lg py-2 px-2 pe-1 text-center">
-              <img src="{{ asset('images/house2.jpg') }}" alt="" class="img-fluid">             
-              </div>
-            </div>
-            <div class="card-body">
-            <div class="d-flex align-items-center justify-content-center">
-                <h6 class="mb-0 text-uppercase">property 1</h6>
-                <h6 class="ms-auto"><i class="fa fa-ellipsis-v text-secondary"></i></h6>
-              </div>
-              
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-12 mt-4 mb-1">
-          <div class="card z-index-2 ">
-            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-              <div class="bg-gray-400 shadow-primary border-radius-lg py-2 px-2 pe-1 text-center">
-              <img src="{{ asset('images/house2.jpg') }}" alt="" class="img-fluid">             
-              </div>
-            </div>
-            <div class="card-body">
-            <div class="d-flex align-items-center justify-content-center">
-                <h6 class="mb-0 text-uppercase">property 1</h6>
-                <h6 class="ms-auto"><i class="fa fa-ellipsis-v text-secondary"></i></h6>
-              </div>
-              
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-12 mt-4 mb-1">
-          <div class="card z-index-2  ">
-            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-              <div class="bg-gray-400 shadow-success border-radius-lg py-2 px-2 pe-1 text-center">
-              <img src="{{ asset('images/house1.jpg') }}" alt="" class="img-fluid">             
-              </div>
-            </div>
-            <div class="card-body">
-              <div class="d-flex align-items-center justify-content-center">
-                <h6 class="mb-0 text-uppercase">property 2</h6>
-                <h6 class="ms-auto"><i class="fa fa-ellipsis-v text-secondary"></i></h6>
-              </div>
-              
-              
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row mt-4 justify-content-center">
-        <div class="col-lg-3 col-md-12 mt-4 mb-1">
-          <div class="card z-index-2 ">
-            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-              <div class="bg-gray-400 shadow-primary border-radius-lg py-2 px-2 pe-1 text-center">
-                <a href="property">
-                <img src="{{ asset('images/house2.jpg') }}" alt="" class="img-fluid">             
-                </a>
-              </div>
-            </div>
-            <div class="card-body">
-            <div class="d-flex align-items-center justify-content-center">
-                <h6 class="mb-0 text-uppercase">property 3</h6>
-                <h6 class="ms-auto"><i class="fa fa-ellipsis-v text-secondary"></i></h6>
-              </div>
-              
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-12 mt-4 mb-1">
-          <div class="card z-index-2 ">
-            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-              <div class="bg-gray-400 shadow-primary border-radius-lg py-2 px-2 pe-1 text-center">
-              <img src="{{ asset('images/house2.jpg') }}" alt="" class="img-fluid">             
-              </div>
-            </div>
-            <div class="card-body">
-            <div class="d-flex align-items-center justify-content-center">
-                <h6 class="mb-0 text-uppercase">property 1</h6>
-                <h6 class="ms-auto"><i class="fa fa-ellipsis-v text-secondary"></i></h6>
-              </div>
-              
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-12 mt-4 mb-1">
-          <div class="card z-index-2 ">
-            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-              <div class="bg-gray-400 shadow-primary border-radius-lg py-2 px-2 pe-1 text-center">
-              <img src="{{ asset('images/house2.jpg') }}" alt="" class="img-fluid">             
-              </div>
-            </div>
-            <div class="card-body">
-            <div class="d-flex align-items-center justify-content-center">
-                <h6 class="mb-0 text-uppercase">property 1</h6>
-                <h6 class="ms-auto"><i class="fa fa-ellipsis-v text-secondary"></i></h6>
-              </div>
-              
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-12 mt-4 mb-1">
-          <div class="card z-index-2  ">
-            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-              <div class="bg-gray-400 shadow-dark border-radius-lg py-2 px-2 pe-1 text-center">
-                <img src="{{ asset('images/house3.jpg') }}" alt="" class="img-fluid">             
-            </div>
-            </div>
-            <div class="card-body">
-            <div class="d-flex align-items-center justify-content-center">
-                <h6 class="mb-0 text-uppercase">property 4</h6>
-                <h6 class="ms-auto"><i class="fa fa-ellipsis-v text-secondary"></i></h6>
-              </div>
-              
-            </div>
-          </div>
-        </div>
+        @endforeach
+       
       </div>
 </div>
 @endsection

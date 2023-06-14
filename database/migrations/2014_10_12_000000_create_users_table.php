@@ -19,9 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('last_name');
             $table->string('email')->unique();
             $table->string('phone');
-            $table->string('accNumber');
             $table->string('occupation');
-            $table->string('role')->default('landlord'); //tenant=>0, landlord=>1
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

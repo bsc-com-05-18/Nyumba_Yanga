@@ -62,7 +62,7 @@
                         <li class="text-capitalize">upload, edit and delete property</li>
                         <li class="text-capitalize">manage tenants and maintenance</li>
                         <li class="text-capitalize">rent tracking and analysis</li>
-                        <a href="" class="card-link text-decoration-none" style="color: #027606;">Landlord Portal</a>
+                        <a href="{{ route('landlord.landlordlogin') }}" class="card-link text-decoration-none" style="color: #027606;">Landlord Portal</a>
 
                     </ul>
                 </div>

@@ -39,7 +39,7 @@
                                     <h6 class="mb-0">Name</h6>
                                 </div>
                                 <div class="col">
-                                    {{ Auth::guard('web')->user()->name.'  '.Auth::guard('web')->user()->last_name}}
+                                    {{ Auth::guard('landlord')->user()->name.'  '.Auth::guard('landlord')->user()->last_name}}
 
                                 </div>
                             
@@ -50,7 +50,7 @@
                                     <h6 class="mb-0">Email</h6>
                                 </div>
                                 <div class="col">
-                                    {{ Auth::guard('web')->user()->email}}
+                                    {{ Auth::guard('landlord')->user()->email}}
 
                                 </div>
                                 
@@ -61,7 +61,7 @@
                                     <h6 class="mb-0">Phone Number</h6>
                                 </div>
                                 <div class="col">
-                                    {{ Auth::guard('web')->user()->phone}}
+                                    {{ Auth::guard('landlord')->user()->phone}}
 
                                 </div>
                                 <div class="col-sm-9 text-secondary">
@@ -74,7 +74,7 @@
                                     <h6 class="mb-0">Account Number</h6>
                                 </div>
                                 <div class="col">
-                                    {{ Auth::guard('web')->user()->accNumber}}
+                                    {{ Auth::guard('landlord')->user()->acc_number}}
 
                                 </div>
                                 <div class="col-sm-9 text-secondary">

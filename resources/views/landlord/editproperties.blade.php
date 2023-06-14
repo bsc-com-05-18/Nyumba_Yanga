@@ -56,10 +56,7 @@
     <input type="text" value="{{$property->address}}" name="address"class="form-control">
   </div>
 
-  <label  class="form-label">Image</label>
-  <div class="input-group input-group-outline mb-3">
-    <input type="text" value="{{$property->image}}" name="image"class="form-control">
-  </div>
+  
  
  
 

@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Landlord\HomeController;
-use App\Http\Controllers\PropertyController;
+use App\Https\Controllers\Auth\LoginController;
+use App\Http\Controllers\Landlord\PropertyController;
+
+// use App\Http\Controllers\Landlord\AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,49 +16,84 @@ use App\Http\Controllers\PropertyController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// LANDING PAGE ROUTES
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/rent', [App\Http\Controllers\LandingPage::class, 'rent'])->name('rent');
-Route::get('/sell', [App\Http\Controllers\LandingPage::class, 'sell'])->name('sell');
-Route::get('/property-review', [App\Http\Controllers\LandingPage::class, 'details'])->name('property-review');
-Route::get('/contacts', [App\Http\Controllers\LandingPage::class, 'contacts'])->name('contacts');
 
+//update product
+Route::get('/edit/{id}', [PropertyController::class, 'updateform']);
+Route::put('/update/{id}',[PropertyController::class, 'update']);
+Route::get('/delete/{id}',[PropertyController::class, 'removeProperty']);
+
+// HOME PAGE
+
+Route::get('/option', [App\Http\Controllers\OptionController::class, 'index'])->name('option');
+
+
+Route::get('/sell', [App\Http\Controllers\SellController::class, 'index'])->name('sell');
+Route::get('/viewbuyproperty/{id}', [App\Http\Controllers\SellController::class, 'display'])->name('buyproperty');
+
+
+Route::get('/rent', [App\Http\Controllers\RentController::class, 'index'])->name('rent');
+Route::get('/viewproperty/{id}', [App\Http\Controllers\RentController::class, 'display'])->name('viewproperty');
+Route::post('/viewproperty/{id}/book', [App\Http\Controllers\RentController::class, 'book']);
+
+
+Route::get('/contacts', [App\Http\Controllers\ContactsController::class, 'index'])->name('contacts');
 
 
 Auth::routes();
 
-Route::namespace('Auth')->middleware('auth')->group(function(){
-   
-    Route::get('/home', [App\Http\Controllers\Landlord\HomeController::class, 'index']);
-    Route::get('/profile', [App\Http\Controllers\Landlord\HomeController::class, 'profile']);
-    Route::get('/addProperty', [App\Http\Controllers\PropertyController::class, 'index']);
-    Route::post('/uploadProperty',[App\Http\Controllers\PropertyController::class, 'store']);
-    Route::get('/myproperties', [App\Http\Controllers\PropertyController::class, 'display']);
-    Route::get('/product-images/{id}', [App\Http\Controllers\PropertyController::class, 'images'])->name('landlord.images');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//Landlord
+Route::namespace('Landlord')->prefix('landlord')->name('landlord.')->group(function(){
+    Route::namespace('Auth')->middleware('guest:landlord')->group(function(){
+        //login
+        // Route::get('login',[App\Http\Controllers\Landlord\Auth\AuthenticatedSessionController::class, 'create'])->name('create');
+        Route::get('login','AuthenticatedSessionController@create')->name('login');
+        Route::post('login','AuthenticatedSessionController@store')->name('landlordlogin');
+        Route::get('register','RegisteredLandlordController@create')->name('register');
+        Route::post('register','RegisteredLandlordController@store')->name('register');
 
 
-    Route::get('/edit/{id}', [PropertyController::class, 'updateform']);
-    Route::put('/update/{id}',[PropertyController::class, 'update']);
-    Route::get('/delete/{id}',[PropertyController::class, 'removeProperty']);
+    });
 
-    Route::get('/tenant/home', [App\Http\Controllers\Tenant\HomeController::class, 'index']);
+    //Landlord Routes
+        Route::middleware('landlord')->group(function(){
+            Route::get('home','HomeController@index')->name('home');
+        });
 
-    Route::get('/tenant/profile', [App\Http\Controllers\Tenant\HomeController::class, 'profile']);
-
-    
-
-    // Worked but didnt pass the url
-    // Route::get('/addProperty', [App\Http\Controllers\MultipleImageController::class, 'index']);
-    // Route::get('save-multiple-image', [App\Http\Controllers\MultipleImageController::class, 'save']);
+        Route::get('profile', [App\Http\Controllers\Landlord\HomeController::class, 'profile']);
 
 
+        //Uploading the property
+        Route::get('image-upload', [PropertyController::class, 'create'])->name('property.create');
+        route::post('image-upload', [PropertyController::class, 'store'])->name('property.store');
+        
+        //Displaying property
+        Route::get('/myproperties', [App\Http\Controllers\Landlord\PropertyController::class, 'display'])->name('myproperties');
 
-    
+
+        Route::get('/rent', [App\Http\Controllers\Landlord\RentController::class, 'index'])->name('rent');
+
+        Route::get('/maintenance', [App\Http\Controllers\Landlord\MaintenanceController::class, 'index'])->name('maintenance');
+
+        Route::get('/tenant', [App\Http\Controllers\Landlord\TenantController::class, 'index'])->name('tenant');
+
+        Route::get('/property', [App\Http\Controllers\Landlord\PropertyController::class, 'index'])->name('property');
+
+        Route::post('logout','Auth\AuthenticatedSessionController@destroy')->name('logout');
 
 
 });
-

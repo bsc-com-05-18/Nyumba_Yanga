@@ -71,7 +71,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="addProperty">
+          <a class="nav-link text-white" href="image-upload">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="fa-solid fa-square-plus"></i>
             </div>
@@ -96,15 +96,15 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="rent">
+          <a class="nav-link text-white " href="maintenance">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-            <i class="fa-solid fa-comment-dots"></i>
+            <i class="fa-sharp fa-solid fa-gears"></i>
             </div>
-            <span class="nav-link-text ms-1">Chat</span>
+            <span class="nav-link-text ms-1">Maintenance</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="">
+          <a class="nav-link text-white " href="tenant">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="fa-solid fa-users"></i>
             </div>
@@ -121,13 +121,13 @@
         </li> -->
         <br>
         <li class="nav-item mt-5">
-          <a class="nav-link text-white " href="{{ route('logout') }}" onclick="event.preventDefault(); if(confirm('Are you sure you want to log out?'))
+          <a class="nav-link text-white " href="{{ route('landlord.logout') }}" onclick="event.preventDefault(); if(confirm('Are you sure you want to log out?'))
               document.getElementById('logout-form').submit();">
-                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                  <form id="logout-form" action="{{ route('landlord.logout') }}" method="POST" class="d-none">
                       @csrf
                   </form>
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-            <i class="fa fa-sign-out"></i>
+              <i class="material-icons opacity-10">logout</i>
             </div>
             <span class="nav-link-text ms-1">Log Out</span>
           </a>
@@ -141,7 +141,6 @@
     <!-- Navbar -->
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 mb-1 shadow-none border-radius-xl bg-gradient-success" id="navbarBlur" data-scroll="true" >
       <div class="container-fluid py-1 px-3">
-
         @yield('nav')
         
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
@@ -153,21 +152,23 @@
           <ul class="navbar-nav  ms-auto">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <!-- <i class="fa fa-user"></i>  -->
                 <img src="{{ asset('images/undraw_profile.svg') }}" alt="" class="rounded text-capitalise" width="30px" height="30px">                               
+                {{ Auth::guard('landlord')->user()->name.' '.Auth::guard('landlord')->user()->last_name}}
 
-                {{ Auth::guard('web')->user()->name.' '.Auth::guard('web')->user()->last_name}}
 
                 </a>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="profile">Profile</a>
 
-                  <a class="dropdown-item" href="profile">Profile</a>
-
-                  <a class="dropdown-item" href="{{ route('logout') }}"
+                  <a class="dropdown-item" href="{{ route('landlord.logout') }}"
                       onclick="event.preventDefault(); if(confirm('Are you sure you want to log out?'))
                                     document.getElementById('logout-form').submit();">
                       {{ __('Logout') }}
                   </a>
+
+                  <form id="logout-form" action="{{ route('landlord.logout') }}" method="POST" class="d-none">
+                      @csrf
+                  </form>
               </div>
                 
             </li>
@@ -180,7 +181,6 @@
                 </div>
               </a>
             </li>
-            
           </ul>
         </div>
       </div>

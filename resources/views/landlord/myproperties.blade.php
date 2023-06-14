@@ -16,7 +16,6 @@
 
       <!--  -->
       <div class="col-md-12">
-            <h3>Property</h3>
            
             <table class="table table-striped">
                 <thead>
@@ -28,6 +27,8 @@
                         <th>Description</th>
                         <th>Size</th>
                         <th>Address</th>
+                        <th>Type</th>
+                        <th>Status</th>
                         <th>Image</th>
                         <th>Action</th>
                     </tr>
@@ -42,28 +43,36 @@
                             <td>{{$i++;}}</td>
                             <td>{{$property->title}}</td>
                             <td>{{$property->location}}</td>
-                            <td>{{$property->title}}</td>
+                            <td>{{$property->price}}</td>
                             <td>{{$property->description}}</td>
                             <td>{{$property->size}}</td>
                             <td>{{$property->address}}</td>
+                            <td>{{$property->type}}</td>
+                            <td>{{$property->status}}</td>
+
                             <td>
-                        <img src="{{ asset('/images/'.$property->image) }}" alt="" class="img-fluid">             
+                        <img src="{{ asset('/images/'.$property->image) }}" alt="" class="img-fluid" style="height: 60px; width: 60px;">             
+                           
                             </td>
                             <td>
                                 <!-- <a href="product-images/{id}" type="button" class="btn text-white btn-info">View</a> -->
                                 <a href="{{url('edit/'.$property->id)}}" type="button" class="btn text-white btn-success">Edit</a>
-                                <a href="{{url('delete/'.$property->id)}}" type="button" class="btn text-white btn-danger">Delete</a>
+                                <a href="{{url('delete/'.$property->id)}}" type="button" class="btn text-white btn-danger"
+                                onclick="return confirm('{{ __('Are you sure you want to delete?') }}')" >Delete</a>
                             </td>
 
                         </tr>
 
                     @empty
                     <tr>
-                        <td colspan="8" class="text-center">No Property yet!</td>
+                        <td colspan="10" class="text-center">No Property yet!</td>
                     </tr>
                     @endforelse
                 </tbody>
             </table>
+            <div class="d-flex justify-content-center">
+                {!! $properties->links() !!}
+            </div>
         </div>
 </div>
 @endsection

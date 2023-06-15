@@ -111,14 +111,14 @@
             <span class="nav-link-text ms-1">Tenants</span>
           </a>
         </li>
-        <!-- <li class="nav-item mb-5">
-          <a class="nav-link text-white " href="../pages/notifications.html">
+        <li class="nav-item mb-5">
+          <a class="nav-link text-white " href="notification">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">notifications</i>
             </div>
             <span class="nav-link-text ms-1">Notifications</span>
           </a>
-        </li> -->
+        </li>
         <br>
         <li class="nav-item mt-5">
           <a class="nav-link text-white " href="{{ route('landlord.logout') }}" onclick="event.preventDefault(); if(confirm('Are you sure you want to log out?'))

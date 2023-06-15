@@ -80,6 +80,9 @@ Route::namespace('Landlord')->prefix('landlord')->name('landlord.')->group(funct
         //Uploading the property
         Route::get('image-upload', [PropertyController::class, 'create'])->name('property.create');
         route::post('image-upload', [PropertyController::class, 'store'])->name('property.store');
+
+        Route::get('/notification', [App\Http\Controllers\Landlord\BookingController::class, 'display'])->name('notification');
+
         
         //Displaying property
         Route::get('/myproperties', [App\Http\Controllers\Landlord\PropertyController::class, 'display'])->name('myproperties');

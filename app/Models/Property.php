@@ -12,7 +12,7 @@ class Property extends Model
     use HasFactory;
     protected $guarded = [];
 
-   public function user(){
+   public function landlord(){
     return $this->belongsTo(Landlord::class);
    }
    public function bookings(){

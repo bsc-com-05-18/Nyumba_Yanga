@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Property;
 use App\Models\Booking;
-
+use App\Models\Landlord;
+use App\Notifications\BookingNotification;
 
 
 use Illuminate\Http\Request;
@@ -32,9 +33,12 @@ class RentController extends Controller
         $booking->phone = $request->input('phone');
         $booking->occupation = $request->input('occupation');
         $booking->save();
+
+        $landlord = Landlord::first();
+        $landlord->notify(new BookingNotification($booking));
          
         return redirect()->back();
-
-
     }
+    
+   
 }

@@ -47,18 +47,27 @@
               <h5 class="card-text">{{ ($try->description) }}</h5>
                             <div class="row">
                 <div class="col-lg-7">
-                  <ul class="list-inline">
-                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                </ul>                
-              </div>
-                <div class="col-lg-5">
-                <p>Reviews (24)</p>
+                <div class="text-uppercase mb-3" style="font-weight: bold;">
+                    Average Rating: {{ $try->averageRating }}
+                    <div class="star-rating" style="color: #F39C12;">
+                        @for ($i = 1; $i <= 5; $i++)
+                            @if ($i <= $try->averageRating)
+                                <i class="fas fa-star"></i>
+                            @else
+                                <i class="far fa-star"></i>
+                            @endif
+                        @endfor
+                    </div>
                 </div>
               </div>
+                <div class="col-lg-5">
+                  <!-- <a class="text-decoration-none" href=""> -->
+                    <p>Reviews ({{ $try->numComments }})</p>
+                  <!-- </a> -->
+
+                  </div>
+                </div>
+                
               <a href="{{ url('viewproperty/'.$try->id) }}" class="btn btn-success">View More Details</a>
               
             </div>
@@ -68,6 +77,7 @@
        
       </div>
 </div>
+
 @endsection
 
 

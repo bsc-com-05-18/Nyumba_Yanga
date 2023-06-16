@@ -26,6 +26,15 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function landlord(){
+        return $this->belongsTo(Landlord::class);
+       }
+    public function assignments(){
+    return $this->hasMany(Assignment::class);
+    }
+    public function reviews(){
+    return $this->hasMany(Rating::class);
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

@@ -44,6 +44,19 @@
         <div class="text-uppercase mb-3" style="font-weight: bold;">
             Description: {{ ($data->description) }}
         </div>
+        <div class="text-uppercase mb-3" style="font-weight: bold;">
+            Average Rating: {{ $averageRating }}
+            <div class="star-rating" style="color: #F39C12;">
+                @for ($i = 1; $i <= 5; $i++)
+                    @if ($i <= $averageRating)
+                        <i class="fas fa-star"></i>
+                    @else
+                        <i class="far fa-star"></i>
+                    @endif
+                @endfor
+            </div>
+        </div>
+       
        <hr>
        <h4 class="py-3" style="font-weight: bold;">TENANCY REQUEST FORM</h4>
         <form action="{{ url('viewproperty/'.$data->id.'/book') }}" method="POST">
@@ -104,9 +117,44 @@
             </div>
         </form>
         
+</div>
+</div>
+<div class="row px-5 pt-3">
+    @foreach ($data->reviews as $review)
+    <h3 class="text-dark text-uppercase" style="font-weight: bold;">Reviews</h3>
+    <div class="col-md-4">
+        <img src="{{ asset('images/undraw_profile.svg')}}" alt="logo" height="50" width="50" class="rounded">   
+        <span>{{ $review->user->name }} {{ $review->user->last_name }}</span>             
+    </div>
+    <div class="col-md-5">
+        @php
+            $starCount = 5;
+        @endphp
+        <div class="star-rating" style="color: #F39C12;">
+            @for ($i = 1; $i <= $starCount; $i++)
+                @if ($i <= $review->rating)
+                    <i class="fas fa-star"></i>
+                @else
+                    <i class="far fa-star"></i>
+                @endif
+            @endfor 
+            <span style="color: #000000;">{{$review->rating}}</span>
+        </div>
+        <div class="comment">
+            {{$review->comment}}
+        </div>
+       
+    @endforeach
+    </div>
+    <div class="col-md-3">
+        Reviewed on {{$review->created_at}}       
+
     </div>
 </div>
+        
 @endsection
+
+
 
 
 

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Https\Controllers\Auth\LoginController;
 use App\Http\Controllers\Landlord\PropertyController;
+use App\Http\Controllers\Landlord\TenantController;
 
 // use App\Http\Controllers\Landlord\AuthenticatedSessionController;
 
@@ -56,6 +57,14 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+//Tenant Routes
+Route::get('/landlord', [App\Http\Controllers\Tenant\LandlordController::class, 'show']);
+Route::get('tenantprofile', [App\Http\Controllers\HomeController::class, 'profile']);
+Route::post('/rate/{id}/{tid}', [App\Http\Controllers\Tenant\RatingController::class, 'rate']);
+
+
+
+
 //Landlord
 Route::namespace('Landlord')->prefix('landlord')->name('landlord.')->group(function(){
     Route::namespace('Auth')->middleware('guest:landlord')->group(function(){
@@ -81,7 +90,7 @@ Route::namespace('Landlord')->prefix('landlord')->name('landlord.')->group(funct
         Route::get('image-upload', [PropertyController::class, 'create'])->name('property.create');
         route::post('image-upload', [PropertyController::class, 'store'])->name('property.store');
 
-        Route::get('/notification', [App\Http\Controllers\Landlord\BookingController::class, 'display'])->name('notification');
+        // Route::get('/notification', [App\Http\Controllers\Landlord\BookingController::class, 'display'])->name('notification');
 
         
         //Displaying property
@@ -92,7 +101,9 @@ Route::namespace('Landlord')->prefix('landlord')->name('landlord.')->group(funct
 
         Route::get('/maintenance', [App\Http\Controllers\Landlord\MaintenanceController::class, 'index'])->name('maintenance');
 
-        Route::get('/tenant', [App\Http\Controllers\Landlord\TenantController::class, 'index'])->name('tenant');
+        Route::get('/addtenant', [App\Http\Controllers\Landlord\TenantController::class, 'index'])->name('tenant');
+        Route::get('/tenant', [App\Http\Controllers\Landlord\TenantController::class, 'show']);
+        route::post('assign-tenant', [TenantController::class, 'assign'])->name('tenant.assign');
 
         Route::get('/property', [App\Http\Controllers\Landlord\PropertyController::class, 'index'])->name('property');
 

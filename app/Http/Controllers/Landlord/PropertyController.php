@@ -41,7 +41,7 @@ class PropertyController extends Controller
 
         Property::insert([
 
-            'user_id' => \Auth::guard('landlord')->user()->id,
+            'landlord_id' => \Auth::guard('landlord')->user()->id,
             'title' => $request->title,
             'location' => $request->location,
             'price' => $request->price,
@@ -59,7 +59,7 @@ class PropertyController extends Controller
     public function display()
     {
 
-        $properties = Property::where('user_id', \Auth::guard('landlord')->user()->id)->paginate(5);
+        $properties = Property::where('landlord_id', \Auth::guard('landlord')->user()->id)->paginate(5);
         return view('landlord.myproperties',compact('properties'));
     }
 

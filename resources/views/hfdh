@@ -1,0 +1,11 @@
+ @php
+    $starCount = 5;
+    @endphp
+    <div class="star-rating">
+        @for ($i = 1; $i <= $starCount; $i++)
+        @if ($i <= $rates->rating)
+        <i class="fas fa-star"></i>
+        @else
+        <i class="far fa-star"></i>
+@endif
+@endfor

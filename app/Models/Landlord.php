@@ -30,6 +30,9 @@ class Landlord extends Authenticatable
     public function properties(){
         return $this->hasMany(Property::class);
     }
+    public function tenants(){
+        return $this->hasMany(User::class);
+    }
     public function bookings(){
         return $this->hasManyThrough(Booking::class, Property::class, 'user_id', 'property_id');
     }

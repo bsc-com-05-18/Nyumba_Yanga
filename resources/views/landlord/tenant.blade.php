@@ -35,24 +35,35 @@
               </div>
             </div>
             <div class="card-body px-0 pb-2">
+             
               <div class="table-responsive">
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-uppercase opacity-7">Tenant</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-uppercase opacity-7 ps-2">property</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">contacts</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">email address</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">phone number</th>
                     </tr>
                   </thead>
                   <tbody>
+                  @foreach ($houses as $house)
+                  @foreach ($house->assignments as $assignment)
                     <tr>
-                      <td>
-                
-                      </td>
+                      <td>{{ $assignment->user->name }} {{ $assignment->user->last_name }}</td>
+                      <td>{{ $house->title }}</td>
+                      <td>{{ $assignment->user->email }}</td>
+                      <td>{{ $assignment->user->phone }}</td>
+
+                     
                     </tr>
+                    
+                    @endforeach
+                    @endforeach
                   </tbody>
                 </table>
               </div>
+              
             </div>        
           </div>
         </div>

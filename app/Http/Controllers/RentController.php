@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Property;
+use App\Models\Rating;
 use App\Models\Booking;
 use App\Models\Landlord;
 use App\Notifications\BookingNotification;
@@ -15,13 +16,21 @@ class RentController extends Controller
     public function index()
     {
         $data = Property::where('status','=','rent')->get();
+
+        foreach ($data as $info) {
+            $info->averageRating = Rating::where('property_id', $info->id)->avg('rating');
+            $info->numComments = Rating::where('property_id', $info->id)->count('comment');
+        }
+
         return view('rent',compact('data'));
     }
     
     public function display($id)
     {
-        $data = Property::where('id', $id)->first();
-        return view('viewproperty', compact('data'));
+
+        $data = Property::with(['reviews.user'])->where('id', $id)->first();
+        $averageRating = $data->reviews->avg('rating');
+        return view('viewproperty', compact('data', 'averageRating'));
     }
     public function book(Request $request, $id)
     {

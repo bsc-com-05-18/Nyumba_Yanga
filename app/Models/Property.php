@@ -15,6 +15,15 @@ class Property extends Model
    public function landlord(){
     return $this->belongsTo(Landlord::class);
    }
+   public function tenant(){
+    return $this->belongsTo(Landlord::class);
+   }
+   public function assignments(){
+    return $this->hasMany(Assignment::class);
+   }
+   public function reviews(){
+    return $this->hasMany(Rating::class);
+   }
    public function bookings(){
     return $this->hasMany(Booking::class);
    }

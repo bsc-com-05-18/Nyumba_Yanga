@@ -18,6 +18,8 @@
 
 
     <!-- Styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <link href="{{ asset('noteicon.png') }}" rel="small icon">

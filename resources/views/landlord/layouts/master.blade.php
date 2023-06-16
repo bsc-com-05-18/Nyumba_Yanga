@@ -84,7 +84,7 @@
             <i class="fa-solid fa-house-chimney"></i>
             </div>
             <span class="nav-link-text ms-1">My Properties</span>
-            <!-- <i class="fa-solid fa-square-plus ms-auto"></i> -->
+            <!-- <i class="fa-solid fa-user-plus"></i> -->
           </a>
         </li>        
         <li class="nav-item">
@@ -111,23 +111,30 @@
             <span class="nav-link-text ms-1">Tenants</span>
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="addtenant">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fa-solid fa-users"></i>
+            </div>
+            <span class="nav-link-text ms-1">Add Tenants</span>
+          </a>
+        </li>
         <li class="nav-item mb-5">
           <a class="nav-link text-white " href="notification">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">notifications</i>
+            <i class="fas fa-history"></i>
             </div>
-            <span class="nav-link-text ms-1">Notifications</span>
+            <span class="nav-link-text ms-1">Booking History</span>
           </a>
         </li>
-        <br>
-        <li class="nav-item mt-5">
+        <li class="nav-item mt-3">
           <a class="nav-link text-white " href="{{ route('landlord.logout') }}" onclick="event.preventDefault(); if(confirm('Are you sure you want to log out?'))
               document.getElementById('logout-form').submit();">
                   <form id="logout-form" action="{{ route('landlord.logout') }}" method="POST" class="d-none">
                       @csrf
                   </form>
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">logout</i>
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
             </div>
             <span class="nav-link-text ms-1">Log Out</span>
           </a>

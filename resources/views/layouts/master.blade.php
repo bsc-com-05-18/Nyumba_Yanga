@@ -46,6 +46,10 @@
   <!-- Nepcha Analytics (nepcha.com) -->
   <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
   <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
   @yield('styles')
 </head>
 
@@ -64,7 +68,7 @@
         <li class="nav-item">
           <a class="nav-link text-white active bg-gradient-primary" href="home">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">dashboard</i>
+            <i class="fa-solid fa-house"></i>
             </div>
             <span class="nav-link-text ms-1">Dashboard</span>
           </a>
@@ -94,7 +98,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="tenant">
+          <a class="nav-link text-white " href="landlord">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="fa-regular fa-user"></i>
             </div>
@@ -104,7 +108,7 @@
         <li class="nav-item mb-5">
           <a class="nav-link text-white " href="../pages/notifications.html">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">notifications</i>
+            <i class="fa-sharp fa-solid fa-bell"></i>
             </div>
             <span class="nav-link-text ms-1">Notifications</span>
           </a>
@@ -117,7 +121,7 @@
               @csrf
           </form>
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">logout</i>
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
             </div>
             <span class="nav-link-text ms-1">Log Out</span>
           </a>
@@ -133,13 +137,7 @@
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 mb-1 shadow-none border-radius-xl bg-gradient-success" id="navbarBlur" data-scroll="true" >
       <div class="container-fluid py-1 px-3">
         @yield('nav')
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Pages</a></li>
-            <li class="breadcrumb-item text-sm text-white active" aria-current="page">Dashboard</li>
-          </ol>
-          <h6 class="font-weight-bolder text-white mb-0">Dashboard</h6>
-        </nav>
+        
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
 
         <ul class="navbar-nav mx-auto text-white font-weight-bold">
@@ -155,6 +153,8 @@
               </a>
 
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="tenantprofile">Profile</a>
+
                   <a class="dropdown-item" href="{{ route('logout') }}"
                       onclick="event.preventDefault(); if(confirm('Are you sure you want to log out?'))
                                     document.getElementById('logout-form').submit();">

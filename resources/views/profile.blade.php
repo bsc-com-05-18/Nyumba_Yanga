@@ -1,4 +1,4 @@
-@extends('landlord.master')
+@extends('layouts.master')
 
 @section('nav')
     <nav aria-label="breadcrumb">
@@ -39,7 +39,7 @@
                                     <h6 class="mb-0">Name</h6>
                                 </div>
                                 <div class="col">
-                                    {{ Auth::guard('landlord')->user()->name.'  '.Auth::guard('landlord')->user()->last_name}}
+                                    {{ Auth::guard('web')->user()->name.'  '.Auth::guard('web')->user()->last_name}}
 
                                 </div>
                             
@@ -50,7 +50,7 @@
                                     <h6 class="mb-0">Email</h6>
                                 </div>
                                 <div class="col">
-                                    {{ Auth::guard('landlord')->user()->email}}
+                                    {{ Auth::guard('web')->user()->email}}
 
                                 </div>
                                 
@@ -61,7 +61,7 @@
                                     <h6 class="mb-0">Phone Number</h6>
                                 </div>
                                 <div class="col">
-                                    {{ Auth::guard('landlord')->user()->phone}}
+                                    {{ Auth::guard('web')->user()->phone}}
 
                                 </div>
                                 <div class="col-sm-9 text-secondary">
@@ -71,10 +71,10 @@
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0">Account Number</h6>
+                                    <h6 class="mb-0">Occupation</h6>
                                 </div>
                                 <div class="col">
-                                    {{ Auth::guard('landlord')->user()->phone}}
+                                    {{ Auth::guard('web')->user()->occupation}}
 
                                 </div>
                                 <div class="col-sm-9 text-secondary">

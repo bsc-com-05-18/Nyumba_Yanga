@@ -24,6 +24,9 @@ class Property extends Model
    public function reviews(){
     return $this->hasMany(Rating::class);
    }
+   public function chats(){
+    return $this->hasMany(Chat::class);
+   }
    public function bookings(){
     return $this->hasMany(Booking::class);
    }

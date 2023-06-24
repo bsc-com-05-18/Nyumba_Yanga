@@ -130,9 +130,9 @@
             <div class="row">
                 <div class="col-lg-6 col-md-12">
                     <div class="input-group input-group-outline my-3">
-                        <input required type="file" name="image" id="image" class="form-control{{  $errors->has('image') ? ' is-invalid' : '' }}" required>
-                        @if ($errors->has('image'))
-                        <div class="invalid-feedback">{{  $errors->first('image') }}</div>
+                        <input required type="file" name="images[]" id="images" class="form-control{{  $errors->has('images') ? ' is-invalid' : '' }}" multiple required>
+                        @if ($errors->has('images'))
+                        <div class="invalid-feedback">{{  $errors->first('images') }}</div>
                         @endif
                     </div>
                 </div>

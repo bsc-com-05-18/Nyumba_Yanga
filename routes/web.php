@@ -4,8 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Https\Controllers\Auth\LoginController;
 use App\Http\Controllers\Landlord\PropertyController;
 use App\Http\Controllers\Landlord\TenantController;
-use App\Http\Controllers\MessagesController;
-
 
 // use App\Http\Controllers\Landlord\AuthenticatedSessionController;
 
@@ -31,16 +29,19 @@ Route::put('/update/{id}',[PropertyController::class, 'update']);
 Route::get('/delete/{id}',[PropertyController::class, 'removeProperty']);
 
 // HOME PAGE
+Route::get('/search', [App\Http\Controllers\SearchController::class, 'welcomeSearch']);
+
 
 Route::get('/option', [App\Http\Controllers\OptionController::class, 'index'])->name('option');
 
 
 Route::get('/sell', [App\Http\Controllers\SellController::class, 'index'])->name('sell');
 Route::get('/viewbuyproperty/{id}', [App\Http\Controllers\SellController::class, 'display'])->name('buyproperty');
-
+Route::get('/sale-search', [App\Http\Controllers\SearchController::class, 'saleSearch']);
 
 Route::get('/rent', [App\Http\Controllers\RentController::class, 'index'])->name('rent');
 Route::get('/viewproperty/{id}', [App\Http\Controllers\RentController::class, 'display'])->name('viewproperty');
+Route::get('/rent-search', [App\Http\Controllers\SearchController::class, 'rentSearch']);
 Route::post('/viewproperty/{id}/book', [App\Http\Controllers\RentController::class, 'book']);
 
 
@@ -75,7 +76,7 @@ Route::namespace('Landlord')->prefix('landlord')->name('landlord.')->group(funct
         Route::get('login','AuthenticatedSessionController@create')->name('login');
         Route::post('login','AuthenticatedSessionController@store')->name('landlordlogin');
         Route::get('register','RegisteredLandlordController@create')->name('register');
-        Route::post('register','RegisteredLandlordController@store')->name('landlordregister');
+        Route::post('register','RegisteredLandlordController@store')->name('register');
 
 
     });

@@ -17,7 +17,6 @@ class CreatePropertiesTable extends Migration
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
             $table->foreignId('landlord_id')->references('id')->on('landlords')->onUpdate('cascade')->onDelete('cascade');
-            // $table->foreignId('tenant_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->string('title');
             $table->string('location');
             $table->string('price');

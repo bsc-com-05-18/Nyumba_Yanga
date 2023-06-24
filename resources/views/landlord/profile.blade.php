@@ -85,9 +85,63 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#changePassword">Change Password</button>
+                                    <button type="button" class="btn btn-success mb-2" data-bs-toggle="modal" data-bs-target="#changePassword">Change Password</button>
                                 </div>
                             </div>
+  
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="changePassword" tabindex="-1" aria-labelledby="changePasswordLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="changePasswordLabel">Change Password</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <!-- ... -->
+                                        <form method="POST" action="change-password">
+                                        @csrf
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <div class="input-group input-group-outline my-3">
+                                                        <input type="password" name="current_password" id="current_password" placeholder="Current Password" class="form-control{{  $errors->has('current_password') ? ' is-invalid' : '' }}" required>
+                                                        @if ($errors->has('current_password'))
+                                                        <div class="invalid-feedback">{{  $errors->first('current_password') }}</div>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <div class="input-group input-group-outline my-3">
+                                                        <input type="password" name="new_password" id="new_password" placeholder="New Password" class="form-control{{  $errors->has('new_password') ? ' is-invalid' : '' }}" required>
+                                                        @if ($errors->has('new_password'))
+                                                        <div class="invalid-feedback">{{  $errors->first('new_password') }}</div>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <div class="input-group input-group-outline my-3">
+                                                        <input type="password" name="new_password_confirmation" id="new_password_confirmation" placeholder="Confirm New Password" class="form-control" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        
+                                        <!--  -->
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-success">Save changes</button>
+                                    </div>
+                                    </form>
+
+                                    </div>
+                                </div>
+                                <!--  -->
+                                </div>
                             </div>
                         </div>
                     </div>

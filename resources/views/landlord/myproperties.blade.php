@@ -24,12 +24,8 @@
                         <th>Title</th>
                         <th>Location</th>
                         <th>Price</th>
-                        <th>Description</th>
-                        <th>Size</th>
-                        <th>Address</th>
                         <th>Type</th>
                         <th>Status</th>
-                        <th>Image</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -37,37 +33,115 @@
                     @php 
                     $i=1;
                     @endphp
-                    @forelse ($properties as $property )
+                    @foreach ($properties as $property )
 
                         <tr>
                             <td>{{$i++;}}</td>
                             <td>{{$property->title}}</td>
                             <td>{{$property->location}}</td>
                             <td>{{$property->price}}</td>
-                            <td>{{$property->description}}</td>
-                            <td>{{$property->size}}</td>
-                            <td>{{$property->address}}</td>
                             <td>{{$property->type}}</td>
                             <td>{{$property->status}}</td>
-
                             <td>
-                        <img src="{{ asset('/images/'.$property->image) }}" alt="" class="img-fluid" style="height: 60px; width: 60px;">             
-                           
-                            </td>
-                            <td>
-                                <!-- <a href="product-images/{id}" type="button" class="btn text-white btn-info">View</a> -->
-                                <a href="{{url('edit/'.$property->id)}}" type="button" class="btn text-white btn-success">Edit</a>
-                                <a href="{{url('delete/'.$property->id)}}" type="button" class="btn text-white btn-danger"
-                                onclick="return confirm('{{ __('Are you sure you want to delete?') }}')" >Delete</a>
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal{{$property->id}}">Edit</button>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{$property->id}}">Delete</button>
                             </td>
 
                         </tr>
 
-                    @empty
-                    <tr>
-                        <td colspan="10" class="text-center">No Property yet!</td>
-                    </tr>
-                    @endforelse
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal{{$property->id}}" tabindex="-1" aria-labelledby="exampleModalLabel{{$property->id}}" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel{{$property->id}}">Edit Property</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="POST" action="{{ url('/myproperties/'.$property->id) }}" enctype= "multipart/form-data">
+                                @csrf
+                                @method('PUT')
+                                <label  class="form-label">Title</label>
+                                <div class="input-group input-group-outline mb-2">
+                                    <input type="text" value="{{$property->title}}"name="title" class="form-control">
+                                </div>
+
+                                <label  class="form-label">Location</label>
+                                <div class="input-group input-group-outline mb-2">
+                                    <input type="text" value="{{$property->location}}"name="location" class="form-control">
+                                </div>
+
+                                <label  class="form-label">Price</label>
+                                <div class="input-group input-group-outline mb-2">
+                                    <input type="text" value="{{$property->price}}"name="price" class="form-control">
+                                </div>
+
+                                <label  class="form-label">Description</label>
+                                <div class="input-group input-group-outline mb-2">
+                                    <input type="text" value="{{$property->description}}" name="description"class="form-control" >
+                                </div>
+
+                                <label  class="form-label">Size</label>
+                                <div class="input-group input-group-outline mb-2">
+                                    <input type="text" value="{{$property->size}}" name="size"class="form-control">
+                                </div>
+
+                                <label  class="form-label">Address</label>
+                                <div class="input-group input-group-outline mb-2">
+                                    <input type="text" value="{{$property->address}}" name="address"class="form-control">
+                                </div>
+
+                                <label  class="form-label">Property Type</label>
+                                <div class="input-group input-group-outline mb-2">
+                                    <select class="form-select px-3 text-muted" id="type" name="type" aria-label="Default select example" required>
+                                        <option value="girls" {{ $property->type === 'girls' ? 'selected' : '' }}>Girls' hostel</option>
+                                        <option value="boys" {{ $property->type === 'boys' ? 'selected' : '' }}>Boys' hostel</option>      
+                                        <option value="bedsitter" {{ $property->type === 'bedsitter' ? 'selected' : '' }}>Bed-Sitter</option>
+                                        <option value="house" {{ $property->type === 'house' ? 'selected' : '' }}>House</option>                             
+                                    </select>
+                                </div>
+
+                                <label  class="form-label">Property Status</label>
+                                <div class="input-group input-group-outline mb-2">
+                                    <select class="form-select px-3 text-muted" id="status" name="status" aria-label="Default select example" required>
+                                        <option value="sale" {{ $property->status === 'sale' ? 'selected' : '' }}>For Sale</option>
+                                        <option value="rent" {{ $property->status === 'rent' ? 'selected' : '' }}>For Rent</option>                              
+                                    </select>
+                                </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                        </form>
+
+                        </div>
+                    </div>
+                    </div>
+                    <!-- DELETE MODAL ---->
+                    <div class="modal fade" id="deleteModal{{$property->id}}" tabindex="-1" aria-labelledby="deleteModalLabel{{$property->id}}" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="deleteModalLabel{{$property->id}}">Delete Property</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure you want to delete this property?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <form action="{{ url('/myproperties/'.$property->id.'/delete') }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                    @endforeach
                 </tbody>
             </table>
             <div class="d-flex justify-content-center">

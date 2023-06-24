@@ -11,22 +11,22 @@
                             <h1 class="mb-2"><span class="text-white text-uppercase mx-3">find your home</span></h1><br>
                             <h5 class="text-white mx-3">Helping you find and manage your dream house</h5>
                         </div>
-                            <form method="post" action="propertygrid.php">
+                            <form method="get" action="search">
                                 <div class="row">
                                     <div class="col-md-6 col-lg-2">
                                         <div class="form-group">
                                             <select class="form-control" name="type">
                                                 <option value="">Select Type</option>
-												<option value="girls_hostel">Girls' Hostel</option>
-                                                <option value="boys_hostel">Boys Hostel</option>
-												<option value="bed_sitter">Bed Sitter</option>
+												<option value="girls">Girls' Hostel</option>
+                                                <option value="boys">Boys Hostel</option>
+												<option value="bedsitter">Bed Sitter</option>
 												<option value="house">House</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-lg-2">
                                         <div class="form-group">
-                                            <select class="form-control" name="stype">
+                                            <select class="form-control" name="status">
                                                 <option value="">Select Status</option>
 												<option value="rent">Rent</option>
 												<option value="sale">Sale</option>
@@ -35,7 +35,7 @@
                                     </div>
                                     <div class="col-md-8 col-lg-6">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" name="city" placeholder="Enter Location" required>
+                                            <input type="text" class="form-control" name="location" placeholder="Enter Location" required>
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-lg-2">

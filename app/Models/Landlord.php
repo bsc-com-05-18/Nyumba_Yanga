@@ -36,6 +36,12 @@ class Landlord extends Authenticatable
     public function bookings(){
         return $this->hasManyThrough(Booking::class, Property::class, 'user_id', 'property_id');
     }
+    public function chatAsSender(){
+        return $this->morphMany(Chat::class, 'sender');
+    }
+    public function chatAsReceiver(){
+        return $this->morphMany(Chat::class, 'receiver');
+    }
 
     /**
      * The attributes that should be hidden for serialization.

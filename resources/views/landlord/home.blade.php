@@ -22,7 +22,7 @@
             <div class="card-body">
             <div class="d-flex align-items-center justify-content-center">
                 <h6 class="mb-0 text-uppercase">properties</h6>
-                <!-- <h2 class="ms-auto">5</h2> -->
+                <h1 class="ms-auto">{{ $numProperties }}</h1>
               </div>
               
             </div>
@@ -73,7 +73,6 @@
             <div class="card-body">
             <div class="d-flex align-items-center justify-content-center">
                 <h6 class="mb-0 text-uppercase">tenants</h6>
-                <!-- <h2 class="ms-auto">5</h2> -->
               </div>
               
             </div>

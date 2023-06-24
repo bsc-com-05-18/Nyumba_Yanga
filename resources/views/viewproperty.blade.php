@@ -6,22 +6,22 @@
         <div class="card z-index-2 ">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
                 <div class="bg-gray-400 shadow-primary border-radius-lg py-2 px-2 pe-1 text-center">
-                    <img src="{{ asset('/images/'.$data->image) }}" alt="logo"class="img-fluid">
+                    <img src="{{ asset('/images/'.$data->image1) }}" alt="logo"class="img-fluid">
                 </div>
             </div>
         <div class="card-body">
             <div class="row"  style="margin-left: 2px;">
                 <div class="col-md-3">
-                    <img src="{{ asset('images/bed.jpg')}}" alt="logo" height="200" width="200" class="mr-3">
+                    <img src="{{ asset('/images/'.$data->image2) }}" alt="logo" height="200" width="200" class="mr-3">
                 </div>
                 <div class="col-md-3">
-                    <img src="{{ asset('images/living.jpg')}}" alt="logo" height="200" width="200" class="mr-3">
+                    <img src="{{ asset('/images/'.$data->image3) }}" alt="logo" height="200" width="200" class="mr-3">
                 </div>
                 <div class="col-md-3">
-                    <img src="{{ asset('images/kit.jpg')}}" alt="logo" height="200" width="200" class="mr-3">                
+                    <img src="{{ asset('/images/'.$data->image4) }}" alt="logo" height="200" width="200" class="mr-3">                
                 </div>
                 <div class="col-md-3">
-                    <img src="{{ asset('images/home.jpg')}}" alt="logo" height="200" width="200" class="">                
+                    <img src="{{ asset('/images/'.$data->image5) }}" alt="logo" height="200" width="200" class="">                
                 </div>
             </div>
             
@@ -56,11 +56,10 @@
                 @endfor
             </div>
         </div>
-       
        <hr>
-       <h4 class="py-3" style="font-weight: bold;">TENANCY REQUEST FORM</h4>
-        <form action="{{ url('viewproperty/'.$data->id.'/book') }}" method="POST">
-        @csrf
+        <h4 class="py-3" style="font-weight: bold;">TENANCY REQUEST FORM</h4>
+        <form action="{{ url('viewproperty/'.$data->id.'/book') }}" method="post">
+            @csrf
             <div class="form-row mb-4">
                 <div class="col-lg-10">
                     <label for="full_name" class="mb-2">Full Name</label>
@@ -117,11 +116,11 @@
             </div>
         </form>
         
-</div>
+    </div>
 </div>
 <div class="row px-5 pt-3">
+    <h3 class="text-dark text-uppercase" style="font-weight: bold;">Property Reviews</h3>
     @foreach ($data->reviews as $review)
-    <h3 class="text-dark text-uppercase" style="font-weight: bold;">Reviews</h3>
     <div class="col-md-4">
         <img src="{{ asset('images/undraw_profile.svg')}}" alt="logo" height="50" width="50" class="rounded">   
         <span>{{ $review->user->name }} {{ $review->user->last_name }}</span>             
@@ -138,23 +137,22 @@
                     <i class="far fa-star"></i>
                 @endif
             @endfor 
-            <span style="color: #000000;">{{$review->rating}}</span>
+            <span style="color: #000000;"><strong>{{$review->rating}}</strong></span>
         </div>
         <div class="comment">
             {{$review->comment}}
         </div>
        
-    @endforeach
     </div>
     <div class="col-md-3">
         Reviewed on {{$review->created_at}}       
 
     </div>
+    @endforeach
+
 </div>
-        
+
 @endsection
-
-
 
 
 

@@ -2,26 +2,26 @@
 
 @section('content')
 <div class="row">
-    <div class="col-lg-8" >
+    <div class="col-lg-7" >
         <div class="card z-index-2 ">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
                 <div class="bg-gray-400 shadow-primary border-radius-lg py-2 px-2 pe-1 text-center">
-                    <img src="{{ asset('/images/'.$data->image) }}" alt="logo"class="img-fluid">
+                    <img src="{{ asset('/images/'.$data->image1) }}" alt="logo"class="img-fluid">
                 </div>
             </div>
         <div class="card-body">
             <div class="row"  style="margin-left: 2px;">
                 <div class="col-md-3">
-                    <img src="{{ asset('images/bed.jpg')}}" alt="logo" height="200" width="200" class="mr-3">
+                    <img src="{{ asset('/images/'.$data->image2) }}" alt="logo" height="200" width="200" class="mr-3">
                 </div>
                 <div class="col-md-3">
-                    <img src="{{ asset('images/living.jpg')}}" alt="logo" height="200" width="200" class="mr-3">
+                    <img src="{{ asset('/images/'.$data->image3) }}" alt="logo" height="200" width="200" class="mr-3">
                 </div>
                 <div class="col-md-3">
-                    <img src="{{ asset('images/kit.jpg')}}" alt="logo" height="200" width="200" class="mr-3">                
+                    <img src="{{ asset('/images/'.$data->image4) }}" alt="logo" height="200" width="200" class="mr-3">                
                 </div>
                 <div class="col-md-3">
-                    <img src="{{ asset('images/home.jpg')}}" alt="logo" height="200" width="200" class="">                
+                    <img src="{{ asset('/images/'.$data->image5) }}" alt="logo" height="200" width="200" class="">                
                 </div>
             </div>
             
@@ -30,7 +30,7 @@
         <!--  -->
 
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-5">
     <h4 class="py-3" style="font-weight: bold;">PROPERTY DETAILS</h4>
         <div class="text-uppercase mb-3" style="font-weight: bold;">
              Name: {{ ($data->title) }}

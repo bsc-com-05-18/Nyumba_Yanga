@@ -11,10 +11,10 @@
 
         <div class="col-md-6">
           <div class="dropdown float-lg-end pe-4">
-              <form action="" method="POST">
+              <form action="sale-search" method="get">
                 <div class="input-group input-group-outline mb-3">
-                  <input type="text" name="query" placeholder="Search by location..." class="form-control">
-                       
+                  <input type="text" name="location" placeholder="Search by location..." class="form-control">   
+                  <button type="submit" class="input-group-outline"><i class="fa-solid fa-search"></i></button>    
                 </div>
               </form>
           </div>
@@ -28,7 +28,7 @@
           <div class="card z-index-2 ">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
               <div class="bg-gray-400 shadow-primary border-radius-lg py-2 px-2 pe-1 text-center">
-              <img src="{{ asset('/images/'.$try->image) }}" alt="" class="img-fluid">             
+              <img src="{{ asset('/images/'.$try->image1) }}" alt="" class="img-fluid">             
               </div>
             </div>
             <div class="card-body">
@@ -42,20 +42,7 @@
               </div>
               <h5 class="card-text"><i class="fa-sharp fa-solid fa-location-dot"></i> {{ ($try->location) }}</h5>
               <h5 class="card-text">{{ ($try->description) }}</h5>
-                            <div class="row">
-                <div class="col-lg-7">
-                  <ul class="list-inline">
-                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                </ul>                
-              </div>
-                <div class="col-lg-5">
-                <p>Reviews (24)</p>
-                </div>
-              </div>
+                            
               <a href="{{ url('viewbuyproperty/'.$try->id) }}" class="btn btn-success">View More Details</a>
               
             </div>

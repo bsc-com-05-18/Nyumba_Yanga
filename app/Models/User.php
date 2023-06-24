@@ -35,6 +35,12 @@ class User extends Authenticatable
     public function reviews(){
     return $this->hasMany(Rating::class);
     }
+    public function chatAsSender(){
+        return $this->morphMany(Chat::class, 'sender');
+    }
+    public function chatAsReceiver(){
+        return $this->morphMany(Chat::class, 'receiver');
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

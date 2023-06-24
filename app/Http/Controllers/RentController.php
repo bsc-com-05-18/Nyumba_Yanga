@@ -18,7 +18,8 @@ class RentController extends Controller
         $data = Property::where('status','=','rent')->get();
 
         foreach ($data as $info) {
-            $info->averageRating = Rating::where('property_id', $info->id)->avg('rating');
+            $averageRating = Rating::where('property_id', $info->id)->avg('rating');
+            $info->averageRating = number_format($averageRating, 2);
             $info->numComments = Rating::where('property_id', $info->id)->count('comment');
         }
 

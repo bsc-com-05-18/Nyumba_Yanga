@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Https\Controllers\Auth\LoginController;
 use App\Http\Controllers\Landlord\PropertyController;
 use App\Http\Controllers\Landlord\TenantController;
+use App\Http\Controllers\MessagesController;
+
 
 // use App\Http\Controllers\Landlord\AuthenticatedSessionController;
 
@@ -73,7 +75,7 @@ Route::namespace('Landlord')->prefix('landlord')->name('landlord.')->group(funct
         Route::get('login','AuthenticatedSessionController@create')->name('login');
         Route::post('login','AuthenticatedSessionController@store')->name('landlordlogin');
         Route::get('register','RegisteredLandlordController@create')->name('register');
-        Route::post('register','RegisteredLandlordController@store')->name('register');
+        Route::post('register','RegisteredLandlordController@store')->name('landlordregister');
 
 
     });
@@ -92,7 +94,7 @@ Route::namespace('Landlord')->prefix('landlord')->name('landlord.')->group(funct
 
         // Route::get('/notification', [App\Http\Controllers\Landlord\BookingController::class, 'display'])->name('notification');
 
-        
+
         //Displaying property
         Route::get('/myproperties', [App\Http\Controllers\Landlord\PropertyController::class, 'display'])->name('myproperties');
 

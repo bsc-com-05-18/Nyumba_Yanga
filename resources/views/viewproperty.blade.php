@@ -114,9 +114,16 @@
 
                 </div>
             </div>
-        </form>
-        
+        </form>        
     </div>
+</div>
+
+<div>
+      <!-- payment direction -->
+      <form action="/session" method="POST">
+             <input type="hidden" name="_token" value="{{csrf_token()}}">
+             <button class="btn btn-success" type="submit" id="checkout-live-button"><i class="fa fa-money"></i> Checkout button</button>
+         </form>
 </div>
 <div class="row px-5 pt-3">
     <h3 class="text-dark text-uppercase" style="font-weight: bold;">Property Reviews</h3>

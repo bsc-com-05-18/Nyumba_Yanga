@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Https\Controllers\Auth\LoginController;
 use App\Http\Controllers\Landlord\PropertyController;
 use App\Http\Controllers\Landlord\TenantController;
+use App\Http\Controllers\StripeController;
+use App\Http\Controllers\processPaymentController;
 
 // use App\Http\Controllers\Landlord\AuthenticatedSessionController;
 
@@ -30,6 +32,15 @@ Route::get('/delete/{id}',[PropertyController::class, 'removeProperty']);
 
 // HOME PAGE
 Route::get('/search', [App\Http\Controllers\SearchController::class, 'welcomeSearch']);
+  
+//payment
+Route::post('/session', [StripeController::class, 'session'])->name('session');
+Route::get('/success', [StripeController::class, 'success'])->name('success');
+Route::get('/cancel', [StripeController::class, 'cancel'])->name('cancel');
+ 
+// Route::post('/process-payment', 'processPaymentController@processPayment')->name('processPayment');
+// Route::get('/process-payment', 'processPaymentController@processPayment')->name('processPayment');
+
 
 
 Route::get('/option', [App\Http\Controllers\OptionController::class, 'index'])->name('option');

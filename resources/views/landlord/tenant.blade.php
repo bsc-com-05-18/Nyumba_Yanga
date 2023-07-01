@@ -12,6 +12,33 @@
 
 @section('content')
 <div class="container-fluid">
+  <div class="row">
+  <div class="container-fluid">
+  @if (session('success'))
+  <div class="alert alert-success" role="alert">
+      {{ session('success') }}
+  </div>
+  @endif
+  <form method="POST" action="assign-tenant">
+    @csrf
+
+    <label for="property">Select Property:</label>
+    <select name="property_id" id="property">
+      @foreach($properties as $property)
+      <option value="{{ $property->id }}">{{ $property->title }}</option>
+      @endforeach
+    </select>
+
+    <label for="tenant">Select Tenant:</label>
+    <select name="user_id" id="tenant">
+      @foreach($tenants as $tenant)
+      <option value="{{ $tenant->id }}">{{ $tenant->name }}  {{ $tenant->last_name }}</option>
+      @endforeach
+    </select>
+    <button type="submit" class="btn bg-gradient-success w-120 my-4 mb-2">Assign</button>
+  </form>
+  </div>
+  <!--  -->
     <div class="row mb-4">
         <div class="col-lg-12 col-md-6 mb-md-0 mb-1">
           <div class="card">

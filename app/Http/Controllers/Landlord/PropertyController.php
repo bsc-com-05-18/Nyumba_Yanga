@@ -60,7 +60,7 @@ class PropertyController extends Controller
         $property->save();
 
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Property uploaded successfully!');
     }   
 
     public function display()
@@ -89,7 +89,7 @@ class PropertyController extends Controller
             $property->images = $images;
         }
         $property->save();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Property edited successfully!');
 
     }
 

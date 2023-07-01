@@ -7,7 +7,12 @@ use Illuminate\Http\Request;
 use App\Models\Property;
 use App\Models\Landlord;
 
+<div class="property-card">
+                <div class="property-tag">{{ $property->type == 'rent' ? 'For Rent' : 'For Sale' }}</div>
+                <img src="{{ asset('/images/'.$property->image1) }}" alt="" class="img-fluid">             
 
+                <h3>{{ $property->title }}</h3>
+            </div>
 class PropertyController extends Controller
 {
 

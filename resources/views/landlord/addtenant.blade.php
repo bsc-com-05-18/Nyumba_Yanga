@@ -20,6 +20,7 @@
       <option value="{{ $property->id }}">{{ $property->title }}</option>
       @endforeach
     </select>
+
     <label for="tenant">Select Tenant:</label>
     <select name="user_id" id="tenant">
       @foreach($tenants as $tenant)

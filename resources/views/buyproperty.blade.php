@@ -45,8 +45,10 @@
             Description: {{ ($data->description) }}
         </div>
        <hr>
-        <form action="" method="POST">
-        <h4 class="py-3" style="font-weight: bold;">OWNERSHIP REQUEST FORM</h4>
+       <h4 class="py-3" style="font-weight: bold;">OWNERSHIP REQUEST FORM</h4>
+        <form action="/submit-tenancy-request" method="post">
+            @csrf
+            <input type="hidden" name="property_id" value="{{ $data->id }}">
             <div class="form-row mb-4">
                 <div class="col-lg-10">
                     <label for="full_name" class="mb-2">Full Name</label>
@@ -95,7 +97,7 @@
                     @enderror
                 </div>
             </div>
-            <div class="form-row mb-2 d-flex justify-content-end">
+            <div class="form-row mb-2">
                 <div class="col-lg-7">
                 <button type="submit" class="btn btn-success">SEND REQUEST</button>
 

@@ -12,18 +12,14 @@
 
 @section('content')
 <h5>Notifications</h5>
-<ul class="text-decoration-none">
+<ul class="list-unstyled">
     @forelse ($notifications as $notification)
         <li>
-            @if (!$notification->read)
-            <strong>{{ $notification->message }} {{ $notification->user->name }} {{ $notification->user->last_name }} for {{ $notification->property->title }}</strong>
-            @else
-                {{ $notification->message }}  {{ $notification->user->name }} {{ $notification->user->last_name }} for {{ $notification->property->title }}
-            @endif
-            <br>
-            <a href="{{ url('notification/'.$notification->id) }}" style="color: text-primary; font-weight: bold;">VIEW DETAILS</a>
-            <!-- <a class="btn btn-primary" href="" role="button">View Details</a> -->
+           <a href="{{ url('notification/'.$notification->id) }}" style="color: {{ $notification->read ? 'gray' : '#0caf12' }};">
+                {{ $notification->message }} {{ $notification->user->name }} {{ $notification->user->last_name }} For Property {{ $notification->property->title }}
+            </a>
         </li>
+        <br>
         @empty
         <p>No notifications yet</p>
     @endforelse

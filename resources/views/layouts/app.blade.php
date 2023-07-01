@@ -29,21 +29,20 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md bg-#0CAF12 shadow-sm mb-0"  style="background: #027606;">
-            <div class="container">
-                <a class="navbar-brand text-light" href="{{ url('/') }}">
-                    <img src="{{ asset('images/logo.png')}}" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
-                    NYUMBA YANGA AGENCY
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
+
+      <nav class="navbar navbar-expand-md bg-#0CAF12 shadow-sm mb-0"  style="background: #027606;">  
+    <a class="navbar-brand text-light mx-3" href="{{ url('/') }}">
+        <img src="{{ asset('images/logo.png')}}" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+        NYUMBA YANGA AGENCY
+    </a>
+                <button class="navbar-toggler mx-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon "></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
+                   
+                
+                    <ul class="navbar-nav ms-auto mx-2">
                     <li class="nav-item">
                 <a class="nav-link active text-light" aria-current="page" href="{{ url('/') }}">HOME</a>
                 </li>
@@ -61,20 +60,17 @@
                 <a class="nav-link text-light" href="contacts">ABOUT</a>
                 </li>
                 <li class="nav-item">
-                    <a href="option">
-                        <button type="button" class="btn btn-light">LOG IN</button>
-                    </a>
+                <a class="nav-link text-light" href="{{ route('landlord.landlordlogin') }}">LANDLORD</a>
                 </li>
-                        <!-- Authentication Links -->
-                    
+                <li class="nav-item">
+                <a class="nav-link text-light" href="{{ route('login') }}">TENANT</a>
+                </li>
+                                
                     </ul>
                 </div>
             </div>
         </nav>
-
-        <main class="py-4">
             @yield('content')
-        </main>
     </div>
 
     @yield('footer')

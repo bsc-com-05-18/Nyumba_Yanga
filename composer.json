@@ -17,7 +17,7 @@
         "laravel/ui": "^3.4",
         "livewire/livewire": "^2.12",
         "munafio/chatify": "^1.6",
-        "stripe/stripe-php": "^10.15",
+        "stripe/stripe-php": "^10.16",
         "twilio/sdk": "^7.3"
     },
     "require-dev": {

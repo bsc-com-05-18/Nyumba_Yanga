@@ -23507,7 +23507,7 @@ hr.horizontal.gray-light {
   width: 18px;
 }
 
-.navbar .sidenav-toggler-inner .sidenav-toggler-line {
+.navbar .-toggler-inner .sidenav-toggler-line {
   transition: all 0.15s ease;
   background: #7b809a;
   border-radius: 0.1rem;

@@ -13,7 +13,7 @@
                     @csrf
                         <div class="form-row">
                             <div class="col-lg-7">
-                            <input id="email" type="email" class="text-center form-control @error('email') is-invalid @enderror my-3 p-2" name="email" value="{{ old('email') }}" placeholder="Email Address" required autocomplete="email" autofocus>
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror my-3 p-2" name="email" value="{{ old('email') }}" placeholder="Email Address" required autocomplete="email" autofocus>
                             @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -23,7 +23,7 @@
                         </div>
                         <div class="form-row">
                             <div class="col-lg-7">
-                            <input id="password" type="password" class="text-center form-control @error('password') is-invalid @enderror my-3 p-2" name="password" placeholder="Password" required autocomplete="current-password">
+                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror my-3 p-2" name="password" placeholder="Password" required autocomplete="current-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">

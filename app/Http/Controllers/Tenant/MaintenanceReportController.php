@@ -55,19 +55,14 @@ class MaintenanceReportController extends Controller
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:5000',
         ]);
 
-        $imagePath = null;
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = time() . '-' . $image->getClientOriginalName();
-            $image->storeAs('maintenance_reports', $imageName, 'public');
-            $imagePath = 'maintenance_reports/' . $imageName;
-        }
+        $imageName = time().'.'.$request->image->extension();
+        $request->image->move(public_path('images'), $imageName);
 
         $maintenanceReport = MaintenanceReport::create([
             'user_id' => \Auth::guard('web')->user()->id,
             'property_id' => $house,
             'description' => $request->input('description'),
-            'image' => $imagePath,
+            'image'=> $imageName,
         ]);
 
         //sending notification to landlord

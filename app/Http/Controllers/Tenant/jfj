@@ -1,0 +1,6 @@
+ $user = \Auth::guard('landlord')->user();
+        $landlordId = $user->id;
+
+        $notifications = $user->unreadNotifications;
+
+        $user->unreadNotifications->markAsRead();

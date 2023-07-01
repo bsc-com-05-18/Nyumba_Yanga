@@ -12,7 +12,7 @@
 @section('content')
 <div class="container-fluid">
       <div class="row mt-1 justify-content-center">
-        <div class="col-lg-5 col-md-6 mt-4 mb-1">
+        <div class="col-sm-3 mt-4 mb-1">
           <div class="card z-index-2 ">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
               <div class="bg-gray-400 shadow-primary border-radius-lg py-3 pe-1 text-center">
@@ -22,13 +22,13 @@
             <div class="card-body">
             <div class="d-flex align-items-center justify-content-center">
                 <h6 class="mb-0 text-uppercase">properties</h6>
-                <h1 class="ms-auto">{{ $numProperties }}</h1>
+                <h6 class="ms-auto">{{ $numProperties }}</h6>
               </div>
               
             </div>
           </div>
         </div>
-        <div class="col-lg-5 col-md-6 mt-4 mb-1">
+        <div class="col-sm-3 mt-4 mb-1">
           <div class="card z-index-2  ">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
               <div class="bg-gray-400 shadow-success border-radius-lg py-3 pe-1 text-center">
@@ -45,9 +45,7 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="row mt-4 justify-content-center">
-        <div class="col-lg-5 col-md-6 mt-1 mb-0">
+        <div class="col-sm-3 mt-4 mb-0">
           <div class="card z-index-2 ">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
               <div class="bg-gray-400 shadow-primary border-radius-lg py-3 pe-1 text-center">
@@ -63,7 +61,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-5 col-md-6 mt-1 mb-0">
+        <div class="col-sm-3 mt-4 mb-0">
           <div class="card z-index-2  ">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
               <div class="bg-gray-400 shadow-dark border-radius-lg py-3 pe-1 text-center">
@@ -79,7 +77,17 @@
           </div>
         </div>
       </div>
+      <div class="row mt-4 justify-content-center">
+
+      </div>
 </div>
+<br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br><br>
 @endsection
 
 @section('footer')

@@ -62,8 +62,8 @@
     <hr class="horizontal light mt-0 mb-2">
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="home">
+      <li class="nav-item">
+          <a class="nav-link text-white" href="home">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="fa-solid fa-house"></i>
             </div>
@@ -87,22 +87,7 @@
             <!-- <i class="fa-solid fa-user-plus"></i> -->
           </a>
         </li>        
-        <li class="nav-item">
-          <a class="nav-link text-white " href="rent">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-            <i class="fa-solid fa-arrow-trend-up"></i>
-            </div>
-            <span class="nav-link-text ms-1">Rent Analysis</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="maintenance">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-            <i class="fa-sharp fa-solid fa-gears"></i>
-            </div>
-            <span class="nav-link-text ms-1">Maintenance</span>
-          </a>
-        </li>
+        
         <li class="nav-item">
           <a class="nav-link text-white " href="tenant">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -111,20 +96,14 @@
             <span class="nav-link-text ms-1">Tenants</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="addtenant">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-            <i class="fa-solid fa-users"></i>
-            </div>
-            <span class="nav-link-text ms-1">Add Tenants</span>
-          </a>
-        </li>
+        
         <li class="nav-item mb-5">
-          <a class="nav-link text-white " href="chat">
+          <a class="nav-link text-white " href="notification-list">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-            <i class="fas fa-history"></i>
+            <i class="fas fa-bell"></i>
             </div>
-            <span class="nav-link-text ms-1">Chat</span>
+           Notifications
+            <span class="badge badge-pill badge-danger">{{  \Auth::guard('landlord')->user()->unreadNotifications->count() }}</span>
           </a>
         </li>
         <li class="nav-item mt-3">

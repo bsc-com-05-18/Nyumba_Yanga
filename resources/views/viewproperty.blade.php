@@ -57,6 +57,7 @@
             </div>
         </div>
        <hr>
+
         <h4 class="py-3" style="font-weight: bold;">TENANCY REQUEST FORM</h4>
         <form action="{{ url('viewproperty/'.$data->id.'/book') }}" method="post">
             @csrf
@@ -108,7 +109,7 @@
                     @enderror
                 </div>
             </div>
-            <div class="form-row mb-2 d-flex justify-content-end">
+            <div class="form-row mb-2">
                 <div class="col-lg-7">
                 <button type="submit" class="btn btn-success">SEND REQUEST</button>
 
@@ -119,11 +120,7 @@
 </div>
 
 <div>
-      <!-- payment direction -->
-      <form action="/session" method="POST">
-             <input type="hidden" name="_token" value="{{csrf_token()}}">
-             <button class="btn btn-success" type="submit" id="checkout-live-button"><i class="fa fa-money"></i> Checkout button</button>
-         </form>
+      
 </div>
 <div class="row px-5 pt-3">
     <h3 class="text-dark text-uppercase" style="font-weight: bold;">Property Reviews</h3>

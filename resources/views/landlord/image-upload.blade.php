@@ -136,62 +136,14 @@
                         @endif
                     </div>
                 </div>
-                <!-- <div class="col-lg-6 col-md-12">
-                    <div class="input-group input-group-outline my-3">
-                        <input type="file" name="image2" id="image2" class="form-control{{  $errors->has('image2') ? ' is-invalid' : '' }}">
-                        @if ($errors->has('image2'))
-                        <div class="invalid-feedback">{{  $errors->first('image2') }}</div>
-                        @endif
-                    </div>
-                </div> -->
+
             </div>
-            <!-- <div class="row">
-                <div class="col-lg-6 col-md-12">
-                    <div class="input-group input-group-outline my-3">
-                        <input type="file" name="image3" id="image3" class="form-control{{  $errors->has('image3') ? ' is-invalid' : '' }}">
-                        @if ($errors->has('image3'))
-                        <div class="invalid-feedback">{{  $errors->first('image3') }}</div>
-                        @endif
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-12">
-                    <div class="input-group input-group-outline my-3">
-                        <input type="file" name="image4" id="image4" class="form-control{{  $errors->has('image4') ? ' is-invalid' : '' }}">
-                        @if ($errors->has('image4'))
-                        <div class="invalid-feedback">{{  $errors->first('image4') }}</div>
-                        @endif
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6 col-md-12">
-                    <div class="input-group input-group-outline my-3">
-                        <input type="file" name="image5" id="image5" class="form-control{{  $errors->has('image5') ? ' is-invalid' : '' }}">
-                        @if ($errors->has('image5'))
-                        <div class="invalid-feedback">{{  $errors->first('image5') }}</div>
-                        @endif
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-12">
-                    <div class="input-group input-group-outline my-3">
-                        <input type="file" name="image6" id="image6" class="form-control{{  $errors->has('image6') ? ' is-invalid' : '' }}">
-                        @if ($errors->has('image6'))
-                        <div class="invalid-feedback">{{  $errors->first('image6') }}</div>
-                        @endif
-                    </div>
-                </div>
-            </div> -->
+
                 <div class="row mx-auto justify-content-center">
-                    <div class="col-md-6">
-                        <div>
-                            <button type="" class="btn bg-gradient-primary w-120 my-4 mb-2">Reset</button>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
+                    
                         <div>
                             <button type="submit" class="btn bg-gradient-success w-120 my-4 mb-2">Add</button>
                         </div>
-                    </div>
                 </div>
         </form>
     </div>

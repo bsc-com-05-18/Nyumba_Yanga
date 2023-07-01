@@ -25,12 +25,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::post('/submit-tenancy-request', [App\Http\Controllers\SellController::class, 'tenancyRequest']);
+
 // Edoiting Property
 Route::put('/myproperties/{id}', [App\Http\Controllers\Landlord\PropertyController::class, 'editForm'])->name('landlord.update');
 Route::delete('/myproperties/{id}/delete', [App\Http\Controllers\Landlord\PropertyController::class, 'removeProperty']);
 
 // MAINTENANCE REPORT ROUTE
-Route::get('/notification/{notification}', [App\Http\Controllers\Landlord\TenantController::class, 'notificationDetails']);
+Route::get('/notification/{notification}', [App\Http\Controllers\Landlord\TenantController::class, 'notificationDetails']);    
+
 
 //payment
 Route::post('/session', [StripeController::class, 'session'])->name('session');
@@ -100,12 +103,7 @@ Route::namespace('Landlord')->prefix('landlord')->name('landlord.')->group(funct
             Route::get('profile', [App\Http\Controllers\Landlord\HomeController::class, 'profile']);
             Route::post('change-password', [App\Http\Controllers\Landlord\HomeController::class, 'changePassword']);
 
-            // chatify
-Route::prefix('chat')->group(function () {
-    Route::get('/rent', 'ChatController@index')->name('chat.index');
-    Route::get('/{conversation}', 'ChatController@show')->name('chat.show');
-    Route::post('/{conversation}/message', 'ChatController@storeMessage')->name('chat.message.store');
-});
+     
 
             //Uploading the property
             Route::get('image-upload', [PropertyController::class, 'create'])->name('property.create');
@@ -113,9 +111,7 @@ Route::prefix('chat')->group(function () {
     
             //update product
 
-            Route::get('/notifications', [App\Http\Controllers\Landlord\TenantController::class, 'notifications']);
-            Route::get('/notification-list', [App\Http\Controllers\Landlord\TenantController::class, 'display']);    
-            Route::patch('/notifications/{notification}', [App\Http\Controllers\Landlord\TenantController::class, 'markAsRead']);
+            Route::get('/notification-list', [App\Http\Controllers\Landlord\TenantController::class, 'notifications']);
             
             //Displaying property
             Route::get('/myproperties', [App\Http\Controllers\Landlord\PropertyController::class, 'display'])->name('myproperties');

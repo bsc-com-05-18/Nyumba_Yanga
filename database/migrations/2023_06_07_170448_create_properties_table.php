@@ -25,12 +25,11 @@ class CreatePropertiesTable extends Migration
             $table->string('address');
             $table->string('type');
             $table->string('status');
-            $table->string('image');
-            $table->string('image2');
-            $table->string('image3');
-            $table->string('image4');
-            $table->string('image5');
-            $table->string('image6');
+            $table->string('image1')->nullable();
+            $table->string('image2')->nullable();
+            $table->string('image3')->nullable();
+            $table->string('image4')->nullable();
+            $table->string('image5')->nullable();
             $table->timestamps();
         });
     }

@@ -65,8 +65,8 @@
     <hr class="horizontal light mt-0 mb-2">
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="home">
+      <li class="nav-item">
+          <a class="nav-link text-white" href="home">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="fa-solid fa-house"></i>
             </div>
@@ -75,14 +75,14 @@
         </li>
         <li class="nav-item">
           <a class="nav-link text-white" href="myproperties">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-            <i class="fa-solid fa-money-check-dollar"></i>
-            </div>
-            <span class="nav-link-text ms-1">Payments</span>
+          <form action="/session" method="POST">
+             <input type="hidden" name="_token" value="{{csrf_token()}}">
+             <button class="btn btn-success" type="submit" id="checkout-live-button"><i class="fa fa-money"></i> Payments</button>
+         </form>
           </a>
         </li>        
         <li class="nav-item">
-          <a class="nav-link text-white " href="maintenance">
+          <a class="nav-link text-white " href="maintenance-report_form">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="fa-sharp fa-solid fa-gears"></i>
             </div>
@@ -103,14 +103,6 @@
             <i class="fa-regular fa-user"></i>
             </div>
             <span class="nav-link-text ms-1">My Landlord</span>
-          </a>
-        </li>
-        <li class="nav-item mb-5">
-          <a class="nav-link text-white " href="../pages/notifications.html">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-            <i class="fa-sharp fa-solid fa-bell"></i>
-            </div>
-            <span class="nav-link-text ms-1">Notifications</span>
           </a>
         </li>
         <br>

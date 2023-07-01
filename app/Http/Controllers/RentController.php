@@ -47,7 +47,7 @@ class RentController extends Controller
         $landlord = Landlord::first();
         $landlord->notify(new BookingNotification($booking));
          
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Tenancy request submitted succefully!');
     }
     
    

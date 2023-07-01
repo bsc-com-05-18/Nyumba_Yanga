@@ -19,6 +19,10 @@ class Notification extends Model
     public function property(){
         return $this->belongsTo(Property::class);
     }
+    public function getReadAttribute($value)
+    {
+        return $value ? 'Read' : 'Unread';
+    }
     public function scopeUnread($query)
     {
         return $query->whereNull('read_at');

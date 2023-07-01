@@ -12,11 +12,12 @@
 
 @section('content')
 <h5>Notification Details</h5>
+
 <p>From: {{ $maintenanceReport->user->name }} {{ $maintenanceReport->user->last_name }}</p>
 <p>For the property: {{ $maintenanceReport->property->title }}</p>
 <p>Problem description: {{ $maintenanceReport->description }}</p>
 @if ($maintenanceReport->image)
-    <img src="{{ asset('maintenance_reports/'. $maintenanceReport->image) }}" alt="attachment">
+<img src="{{ asset('/images/'.$maintenanceReport->image) }}" alt="attachment" height="200" width="200" class="mr-3">
 @endif
 @endsection
 

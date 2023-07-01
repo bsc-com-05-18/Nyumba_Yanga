@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('styles')
+
+@endsection
+
 @section('content')
 <!-- homepage -->
 <div class="overlay-black w-100 position-relative" style="background-image: url('images/home.jpg'); height: 500px; background-size: cover; background-position: center center; background-repeat: no-repeat;">
@@ -79,6 +83,7 @@
             </div>
         </div>
     </div>
+    
 </div>
 
 <!-- about and contacts -->

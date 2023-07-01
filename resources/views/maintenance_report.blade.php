@@ -11,7 +11,7 @@
 @endsection
 
 @section('content')
-<div class="container text-muted">
+<div class="container text-muted mt-5">
     <div class="content-wrapper">
         <div class="row justify-content-center">
             <div class="col-8">
@@ -27,18 +27,27 @@
 
                   <form action="{{ route('maintenance-reports.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
-                        <div class="form-group">
-                            <label for="description">Description</label>
-                            <textarea name="description" id="description" class="form-control" required></textarea>
+                        <div class="col-lg-6 col-md-12 mt-3 mx-3">
+                            <div class="input-group input-group-outline mb-3">Fault Description:
+                                <input type="textarea" name="description" id="description"class="form-control" required>
+                            </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mx-3">
                             <label for="image">Attachment</label>
                             <input type="file" name="image" id="image" class="form-control-file">
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Submit Report</button>
+                        <button type="submit" class="btn btn-warning mx-3">Submit Report</button>
                     </form>
                 </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
             </div>
         </div>
     </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Property;
+use App\Models\payment;
 use Illuminate\Http\Request;
 
 class StripeController extends Controller
@@ -12,7 +13,7 @@ class StripeController extends Controller
         $user         = auth()->user(); 
 
         // Array to store the line items for the checkout session
-        // $propertyItems = []; 
+         $propertyItems = []; 
 
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET')); // Set the Stripe API key
 
@@ -49,9 +50,9 @@ class StripeController extends Controller
             'metadata'              => [
                 'user_id' => "0001" // Set any additional metadata (optional)
             ],
-            // 'customer_email' => "myemail@gmail.com",  
-            'success_url' => route('success'),
-            'cancel_url'  => route('cancel'), 
+             'customer_email' => 'myemail@gmail.com',  
+             'success_url' => route('success'),
+             'cancel_url'  => route('cancel'), 
         ]);
 
         // Redirect the user to the checkout session URL
@@ -60,7 +61,9 @@ class StripeController extends Controller
 
     public function success()
     {
-        return "Thanks for your order!";
+
+        // return "Payment is successful!";
+        return view('successpayment');
     }
 
     public function cancel()

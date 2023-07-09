@@ -11,7 +11,7 @@
 @endsection
 
 @section('content')
-<div class="container text-muted">
+<div class="container-fluid" style="min-height: 75vh; margin: 0; padding: 0;">
     <div class="content-wrapper">
         <div class="row justify-content-center">
             <div class="col-8">
@@ -46,7 +46,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary mt-5">Pay</button>
+                            <button type="submit" class="btn btn-success mt-5">Pay</button>
                         </div>
 
                     </form>

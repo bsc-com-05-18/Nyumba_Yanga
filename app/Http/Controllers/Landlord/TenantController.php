@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\MaintenanceReport;
 use App\Models\Property;
 use App\Models\User;
+use App\Models\PaymentNotification;
 use App\Models\Landlord;
 use App\Models\Booking;
 use App\Models\Assignment;
@@ -139,6 +140,32 @@ class TenantController extends Controller
 
         return view('landlord.rent', compact('payments'));
 
+    }
+    public function paymentNotifications()
+    {
+
+        $user = \Auth::guard('landlord')->user();
+        $landlordId = $user->id;
+
+        $notifications = PaymentNotification::where('landlord_id', $landlordId)->orderBy('created_at', 'desc')->paginate(8);
+
+        $unreadNotificationCount = PaymentNotification::where('landlord_id', $landlordId)->where('read', 0)->count();
+
+        return view('landlord.payment-notification', compact('user', 'notifications', 'unreadNotificationCount'));
+    }
+    public function paymentNotificationDetails(PaymentNotification $notification)
+    {
+        $user = \Auth::guard('landlord')->user();
+        $landlordId = $user->id;
+
+        $notification->update(['read' => true]);
+        $unreadNotificationCount = PaymentNotification::where('landlord_id', $landlordId)->where('read', 0)->count();
+
+        $details = PaymentNotification::where('landlord_id', $landlordId);
+
+        $paymentReport = $notification->payment;
+
+        return view('landlord.paymentNotificationDetails', compact('notification', 'unreadNotificationCount', 'paymentReport', 'details'));
     }
    
 }

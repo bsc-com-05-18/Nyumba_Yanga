@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Payment extends Model
 {
     use HasFactory;
+    protected $guarded = [];
+
     public function landlord(){
         return $this->belongsTo(Landlord::class);
        }
@@ -16,5 +18,9 @@ class Payment extends Model
        }
        public function property(){
         return $this->belongsTo(Property::class, 'property_id');
+       }
+       public function paymentNotification()
+       {
+           return $this->belongsTo(PaymentNotification::class, 'payment_id');
        }
 }

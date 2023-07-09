@@ -37,6 +37,7 @@ Route::get('/unassign-tenant/{tenantId}', [App\Http\Controllers\Landlord\TenantC
 // Notification
 Route::get('/notification/{notification}', [App\Http\Controllers\Landlord\TenantController::class, 'notificationDetails']);
 Route::get('/book-notification/{notification}', [App\Http\Controllers\Landlord\BookingController::class, 'notificationDetails']);
+Route::get('/payment-notification/{notification}', [App\Http\Controllers\Landlord\TenantController::class, 'paymentNotificationDetails']);
 
 //payment
 Route::post('/session', [StripeController::class, 'session'])->name('session');
@@ -117,6 +118,7 @@ Route::namespace('Landlord')->prefix('landlord')->name('landlord.')->group(funct
 
             Route::get('/notification-list', [App\Http\Controllers\Landlord\TenantController::class, 'notifications']);
             Route::get('/booking-list', [App\Http\Controllers\Landlord\BookingController::class, 'notifications']);
+            Route::get('/payment-list', [App\Http\Controllers\Landlord\TenantController::class, 'paymentNotifications']);
             Route::get('/booking-history', [App\Http\Controllers\Landlord\BookingController::class, 'display']);
             Route::get('/tenant-history', [App\Http\Controllers\Landlord\TenantController::class, 'history']);
 

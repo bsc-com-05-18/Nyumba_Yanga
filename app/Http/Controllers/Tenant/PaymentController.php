@@ -9,6 +9,7 @@ use Stripe\Charge;
 use Stripe\Customer;
 use Stripe\PaymentIntent;
 use App\Models\Payment;
+use App\Models\PaymentNotification;
 use App\Models\Landlord;
 use App\Models\User;
 use App\Models\Assignment;
@@ -58,6 +59,25 @@ class PaymentController extends Controller
             $tenantPayment->property_id = $propertyId;
             $tenantPayment->payment_amount = $paymentAmount;
             $tenantPayment->save();
+
+             //sending notification to landlord
+            $tenant = \Auth::guard('web')->user();
+            $houses = $tenant->assignments()->with('property.landlord')->first();
+
+            $landlord = $houses->property->landlord->id;
+            $propertyId = $houses->property->id;
+
+            if ($landlord) {
+                $notification = new PaymentNotification();
+                $notification->payment_id = $tenantPayment->id;
+                $notification->user_id = $tenant->id;
+                $notification->landlord_id = $landlord;
+                $notification->property_id = $propertyId;
+                $notification->message = 'You have a payment from';
+                
+                $notification->save();
+            }
+            // 
 
             if ($charge->status === 'succeeded') {
 

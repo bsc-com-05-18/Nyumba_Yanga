@@ -55,6 +55,9 @@ class Landlord extends Authenticatable
     public function unreadBookNotifications(){
         return $this->hasMany(BookNotifications::class)->where('read', false);
     }
+    public function unreadPaymentNotifications(){
+        return $this->hasMany(PaymentNotification::class)->where('read', false);
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

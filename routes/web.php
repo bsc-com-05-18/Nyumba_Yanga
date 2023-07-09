@@ -27,13 +27,16 @@ Route::get('/', function () {
 
 Route::post('/submit-tenancy-request', [App\Http\Controllers\SellController::class, 'tenancyRequest']);
 
-// Edoiting Property
+// Editing Property
 Route::put('/myproperties/{id}', [App\Http\Controllers\Landlord\PropertyController::class, 'editForm'])->name('landlord.update');
 Route::delete('/myproperties/{id}/delete', [App\Http\Controllers\Landlord\PropertyController::class, 'removeProperty']);
+Route::get('/properties/{property}/', [App\Http\Controllers\Landlord\PropertyController::class, 'propertyDetails']);
+Route::get('/unassign-tenant/{tenantId}', [App\Http\Controllers\Landlord\TenantController::class, 'unassignTenant'])->name('unassign.tenant');
 
-// MAINTENANCE REPORT ROUTE
-Route::get('/notification/{notification}', [App\Http\Controllers\Landlord\TenantController::class, 'notificationDetails']);    
 
+// Notification
+Route::get('/notification/{notification}', [App\Http\Controllers\Landlord\TenantController::class, 'notificationDetails']);
+Route::get('/book-notification/{notification}', [App\Http\Controllers\Landlord\BookingController::class, 'notificationDetails']);
 
 //payment
 Route::post('/session', [StripeController::class, 'session'])->name('session');
@@ -76,13 +79,14 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-//Tenant Routes
+//Tenant Routes check-payment
 Route::get('/landlord', [App\Http\Controllers\Tenant\LandlordController::class, 'show']);
 Route::get('tenantprofile', [App\Http\Controllers\HomeController::class, 'profile']);
+Route::post('change-password-tenant', [App\Http\Controllers\HomeController::class, 'changePassword']);
 Route::post('/rate/{id}/{tid}', [App\Http\Controllers\Tenant\RatingController::class, 'rate']);
-
-
-
+Route::get('/request-approval', [App\Http\Controllers\Tenant\LandlordController::class, 'tenantStatus']);
+Route::get('payment', [App\Http\Controllers\Tenant\PaymentController::class, 'index']);
+Route::post('process-payment', [App\Http\Controllers\Tenant\PaymentController::class, 'processPayment']);
 
 //Landlord
 Route::namespace('Landlord')->prefix('landlord')->name('landlord.')->group(function(){
@@ -103,15 +107,19 @@ Route::namespace('Landlord')->prefix('landlord')->name('landlord.')->group(funct
             Route::get('profile', [App\Http\Controllers\Landlord\HomeController::class, 'profile']);
             Route::post('change-password', [App\Http\Controllers\Landlord\HomeController::class, 'changePassword']);
 
-     
+            Route::get('check-payment', [App\Http\Controllers\Landlord\TenantController::class, 'checkPayment']);
+
 
             //Uploading the property
             Route::get('image-upload', [PropertyController::class, 'create'])->name('property.create');
             Route::post('image-upload', [PropertyController::class, 'store'])->name('property.store');
     
-            //update product
 
             Route::get('/notification-list', [App\Http\Controllers\Landlord\TenantController::class, 'notifications']);
+            Route::get('/booking-list', [App\Http\Controllers\Landlord\BookingController::class, 'notifications']);
+            Route::get('/booking-history', [App\Http\Controllers\Landlord\BookingController::class, 'display']);
+            Route::get('/tenant-history', [App\Http\Controllers\Landlord\TenantController::class, 'history']);
+
             
             //Displaying property
             Route::get('/myproperties', [App\Http\Controllers\Landlord\PropertyController::class, 'display'])->name('myproperties');
@@ -119,10 +127,8 @@ Route::namespace('Landlord')->prefix('landlord')->name('landlord.')->group(funct
     
             Route::get('/rent', [App\Http\Controllers\Landlord\RentController::class, 'index'])->name('rent');
     
-            Route::get('/maintenance', [App\Http\Controllers\Landlord\MaintenanceController::class, 'index'])->name('maintenance');
     
-            Route::get('/addtenant', [App\Http\Controllers\Landlord\TenantController::class, 'index'])->name('tenant');
-            Route::get('/tenant', [App\Http\Controllers\Landlord\TenantController::class, 'show']);
+            Route::get('/tenant', [App\Http\Controllers\Landlord\TenantController::class, 'show'])->name('tenant.page');
             route::post('assign-tenant', [TenantController::class, 'assign'])->name('tenant.assign');
     
             Route::get('/property', [App\Http\Controllers\Landlord\PropertyController::class, 'index'])->name('property');

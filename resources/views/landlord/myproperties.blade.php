@@ -11,7 +11,7 @@
 @endsection
 
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid" style="min-height: 75vh; margin: 0; padding: 0;">
   <!--  -->
 
       <!--  -->
@@ -28,9 +28,9 @@
                         <th>#</th>
                         <th>Title</th>
                         <th>Location</th>
-                        <th>Price</th>
-                        <th>Type</th>
-                        <th>Status</th>
+                        <th>Quantity</th>
+                        <!-- <th>Type</th>
+                        <th>Status</th> -->
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -44,10 +44,11 @@
                             <td>{{$i++;}}</td>
                             <td>{{$property->title}}</td>
                             <td>{{$property->location}}</td>
-                            <td>{{$property->price}}</td>
-                            <td>{{$property->type}}</td>
-                            <td>{{$property->status}}</td>
+                            <td>{{$property->quantity}}</td>
+                            <!-- <td>{{$property->type}}</td>
+                            <td>{{$property->status}}</td> -->
                             <td>
+                            <a href="{{ url('properties/' .$property->id . '/') }}" class="btn btn-info">View Property Details</a>
                             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal{{$property->id}}">Edit</button>
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{$property->id}}">Delete</button>
                             </td>
@@ -79,7 +80,7 @@
 
                                 <label  class="form-label">Price</label>
                                 <div class="input-group input-group-outline mb-2">
-                                    <input type="text" value="{{$property->price}}"name="price" class="form-control">
+                                    <input type="number" value="{{$property->price}}"name="price" class="form-control">
                                 </div>
 
                                 <label  class="form-label">Description</label>
@@ -90,6 +91,11 @@
                                 <label  class="form-label">Size</label>
                                 <div class="input-group input-group-outline mb-2">
                                     <input type="text" value="{{$property->size}}" name="size"class="form-control">
+                                </div>
+
+                                <label  class="form-label">Quantity</label>
+                                <div class="input-group input-group-outline mb-2">
+                                    <input type="number" value="{{$property->quantity}}"name="quantity" class="form-control">
                                 </div>
 
                                 <label  class="form-label">Address</label>

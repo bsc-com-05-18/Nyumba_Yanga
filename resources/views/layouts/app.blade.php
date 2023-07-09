@@ -27,7 +27,7 @@
 </head>
 <!-- 4f805d -->
 
-<body>
+<body style="display: flex; flex-direction: column; min-height: 100vh; margin: 0; padding: 0;">
     <div id="app">
 
       <nav class="navbar navbar-expand-md bg-#0CAF12 shadow-sm mb-0"  style="background: #027606;">  
@@ -70,11 +70,13 @@
                 </div>
             </div>
         </nav>
-            @yield('content')
+        <div style="flex: 1;">
+        @yield('content')
+        </div>
     </div>
 
     @yield('footer')
-  <footer class="main-footer">
+  <footer class="main-footer" style="flex-shrink: 0;">
     <hr>
     <div class="container-fluid" style="background-color: #027606;">
             <div class="row justify-content-center text-center text-light">

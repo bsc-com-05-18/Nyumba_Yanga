@@ -11,14 +11,24 @@
 @endsection
 
 @section('content')
-<h5>Notification Details</h5>
-
-<p>From: {{ $maintenanceReport->user->name }} {{ $maintenanceReport->user->last_name }}</p>
-<p>For the property: {{ $maintenanceReport->property->title }}</p>
-<p>Problem description: {{ $maintenanceReport->description }}</p>
-@if ($maintenanceReport->image)
-<img src="{{ asset('/images/'.$maintenanceReport->image) }}" alt="attachment" height="200" width="200" class="mr-3">
-@endif
+<div class="container-fluid" style="min-height: 75vh; margin: 0; padding: 0;">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h5 class="m-0 font-weight-bold text-center text-uppercase">notification details</h5>   
+                </div>
+                    <p>From: {{ $maintenanceReport->user->name }} {{ $maintenanceReport->user->last_name }}</p>
+                    <p>For the property: {{ $maintenanceReport->property->title }}</p>
+                    <p>Problem description: {{ $maintenanceReport->description }}</p>
+                    @if ($maintenanceReport->image)
+                    <img src="{{ asset('/images/'.$maintenanceReport->image) }}" alt="attachment" height="200" width="200" class="mr-3">
+                    @endif
+            </div>
+            
+        </div>
+    </div>
+</div>
 @endsection
 
 @section('footer')

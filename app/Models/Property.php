@@ -16,7 +16,7 @@ class Property extends Model
     return $this->belongsTo(Landlord::class);
    }
    public function tenant(){
-    return $this->belongsTo(Landlord::class);
+    return $this->belongsTo(User::class);
    }
    public function assignments(){
     return $this->hasMany(Assignment::class);
@@ -33,4 +33,18 @@ public function notifications(){
    public function bookings(){
     return $this->hasMany(Booking::class);
    }
+   public function payments(){
+    return $this->hasMany(Payment::class, 'property_id');
+   }
+   public function requestNotifications(){
+    return $this->hasMany(BookNotifications::class);
+}
+public function user()
+{
+    return $this->hasOne(Assignment::class)->whereNull('end_date');
+}
+public function assignmentHistory()
+{
+    return $this->hasMany(Assignment::class);
+}
 }

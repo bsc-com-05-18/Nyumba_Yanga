@@ -8,10 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Assignment extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'property_id',
-        'user_id',
-    ];
+    protected $guarded = [];
 
     public function property(){
         return $this->belongsTo(Property::class);

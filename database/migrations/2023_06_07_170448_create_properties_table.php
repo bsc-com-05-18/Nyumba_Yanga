@@ -19,9 +19,10 @@ class CreatePropertiesTable extends Migration
             $table->foreignId('landlord_id')->references('id')->on('landlords')->onUpdate('cascade')->onDelete('cascade');
             $table->string('title');
             $table->string('location');
-            $table->string('price');
+            $table->decimal('price');
             $table->string('description');
             $table->string('size');
+            $table->int('quantity');
             $table->string('address');
             $table->string('type');
             $table->string('status');

@@ -11,7 +11,7 @@
 @endsection
 
 @section('content')
-<div class="container text-muted">
+<div class="container-fluid" style="min-height: 75vh; margin: 0; padding: 0;">
     <div class="content-wrapper">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
         </div>
@@ -21,6 +21,7 @@
                     <div class="card-header py-3">
                         <h5 class="m-0 font-weight-bold text-center">User Profile</h5>     
                     </div>
+                   
                     <div class="row">
                         <div class="col-4 class">
                             <div class="d-flex justify-content-center">
@@ -92,55 +93,60 @@
 
                                 <!-- Modal -->
                                 <div class="modal fade" id="changePassword" tabindex="-1" aria-labelledby="changePasswordLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="changePasswordLabel">Change Password</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <!-- ... -->
-                                        <form method="POST" action="change-password">
-                                        @csrf
-                                            <div class="form-row">
-                                                <div class="col">
-                                                    <div class="input-group input-group-outline my-3">
-                                                        <input type="password" name="current_password" id="current_password" placeholder="Current Password" class="form-control{{  $errors->has('current_password') ? ' is-invalid' : '' }}" required>
-                                                        @if ($errors->has('current_password'))
-                                                        <div class="invalid-feedback">{{  $errors->first('current_password') }}</div>
-                                                        @endif
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="changePasswordLabel">Change Password</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                        @if (session('success'))
+                                            <div class="alert alert-success" role="alert">
+                                                {{ session('success') }}
+                                            </div>
+                                        @endif
+                                            <!-- ... -->
+                                            <form method="POST" action="change-password" id="changePasswordForm">
+                                            @csrf
+                                                <div class="form-row">
+                                                    <div class="col">
+                                                        <div class="input-group input-group-outline my-3">
+                                                            <input type="password" name="current_password" id="current_password" placeholder="Current Password" class="form-control{{  $errors->has('current_password') ? ' is-invalid' : '' }}" required>
+                                                            @if ($errors->has('current_password'))
+                                                            <div class="invalid-feedback">{{  $errors->first('current_password') }}</div>
+                                                            @endif
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="col">
-                                                    <div class="input-group input-group-outline my-3">
-                                                        <input type="password" name="new_password" id="new_password" placeholder="New Password" class="form-control{{  $errors->has('new_password') ? ' is-invalid' : '' }}" required>
-                                                        @if ($errors->has('new_password'))
-                                                        <div class="invalid-feedback">{{  $errors->first('new_password') }}</div>
-                                                        @endif
+                                                <div class="form-row">
+                                                    <div class="col">
+                                                        <div class="input-group input-group-outline my-3">
+                                                            <input type="password" name="new_password" id="new_password" placeholder="New Password" class="form-control{{  $errors->has('new_password') ? ' is-invalid' : '' }}" required>
+                                                            @if ($errors->has('new_password'))
+                                                            <div class="invalid-feedback">{{  $errors->first('new_password') }}</div>
+                                                            @endif
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="col">
-                                                    <div class="input-group input-group-outline my-3">
-                                                        <input type="password" name="new_password_confirmation" id="new_password_confirmation" placeholder="Confirm New Password" class="form-control" required>
+                                                <div class="form-row">
+                                                    <div class="col">
+                                                        <div class="input-group input-group-outline my-3">
+                                                            <input type="password" name="new_password_confirmation" id="new_password_confirmation" placeholder="Confirm New Password" class="form-control" required>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        
-                                        <!--  -->
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-success">Save changes</button>
-                                    </div>
-                                    </form>
+                                            
+                                            <!--  -->
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-success">Save changes</button>
+                                        </div>
+                                        </form>
 
+                                        </div>
                                     </div>
-                                </div>
-                                <!--  -->
+                                    <!--  -->
                                 </div>
                             </div>
                         </div>
@@ -159,4 +165,5 @@
 
 @section('scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 @endsection

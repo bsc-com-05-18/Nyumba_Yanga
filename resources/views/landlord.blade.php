@@ -25,13 +25,12 @@
                         <div class="col-8">
                             <!-- Content Row -->
                         <div class="card-body">
-                        @foreach ($houses as $house)
                             <div class="row">
                                 <div class="col-md-6">
                                     <h6 class="mb-0">Landlord Name</h6>
                                 </div>
                                 <div class="col">
-                                {{ $house->property->landlord->name }} {{ $house->property->landlord->last_name }}
+                                {{ $houses->property->landlord->name }} {{ $houses->property->landlord->last_name }}
                                 </div>
                             
                             </div>
@@ -41,7 +40,7 @@
                                     <h6 class="mb-0">Property Name</h6>
                                 </div>
                                 <div class="col">
-                                {{ $house->property->title }}
+                                {{ $houses->property->title }}
                                 </div>
                                 
                             </div>
@@ -51,7 +50,7 @@
                                     <h6 class="mb-0">Landlord Email</h6>
                                 </div>
                                 <div class="col">
-                                {{ $house->property->landlord->email }}
+                                {{ $houses->property->landlord->email }}
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                     
@@ -63,7 +62,7 @@
                                     <h6 class="mb-0">Landlord Phone Number</h6>
                                 </div>
                                 <div class="col">
-                                {{ $house->property->landlord->phone }}
+                                {{ $houses->property->landlord->phone }}
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                     
@@ -74,7 +73,7 @@
                             </div>
                             <!-- Rating and commenting -->
                             <h5>RATE THIS PROPERTY</h5>
-                            <form action="{{ url('rate/'.$house->property->id.'/'.$tenant->id) }}" method="POST">
+                            <form action="{{ url('rate/'.$houses->property->id.'/'.$tenant->id) }}" method="POST">
                               @csrf
                               <div class="row">
                                 <div class="col-md-6">
@@ -107,8 +106,7 @@
                               });
                             </script>
                         </div>
-                        @endforeach
-
+                       
                     </div>
                 </div>
             </div>

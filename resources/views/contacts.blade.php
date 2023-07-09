@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="row">
+<!-- <div class="row">
 
         @foreach ($properties as $property)
         <div class="col-md-3">
@@ -24,7 +24,7 @@
         </div>
         @endforeach
 
-    </div>
+    </div> -->
     <!-- tsytr -->
    
 

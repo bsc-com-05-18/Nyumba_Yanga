@@ -22,7 +22,7 @@
     <link href="{{ asset('noteicon.png') }}" rel="small icon">
 
 </head>
-<body>
+<body style="display: flex; flex-direction: column; min-height: 100vh; margin: 0; padding: 0;">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">

@@ -32,6 +32,11 @@
     </div>
     <div class="col-lg-5">
     <h4 class="py-3" style="font-weight: bold;">PROPERTY DETAILS</h4>
+            <div class="status">
+                @if ($data->quantity === 0)
+                  <h4 style="color: red; font-weight: bold;">UNAVAILABLE</h4>
+                @endif
+              </div>
         <div class="text-uppercase mb-3" style="font-weight: bold;">
              Name: {{ ($data->title) }}
         </div>

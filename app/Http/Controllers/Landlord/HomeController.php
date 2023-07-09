@@ -20,9 +20,12 @@ class HomeController extends Controller
         $numProperties = Property::where('landlord_id', $landlordId)->count('id');
 
         $landlord = \Auth::guard('landlord')->user();
+        $tenantCount =  $landlord->properties()->whereHas('assignments', function ($query) {
+            $query->whereNull('end_date');
+        })->count();
 
-            // $tenantCount = $landlord->tenants()->with('assignments.properties')->count('id');
-        return view('landlord.home', compact('numProperties'));
+
+        return view('landlord.home', compact('numProperties', 'tenantCount'));
     }
 
     public function profile()

@@ -15,8 +15,18 @@ class LandlordController extends Controller
     public function show()
     {
         $tenant = \Auth::guard('web')->user();
-        $houses = $tenant->assignments()->with('property.landlord')->get();
+        $houses = $tenant->assignments()->with('property.landlord')->first();
 
         return view('landlord', compact('tenant','houses'));
+    }
+
+    public function tenantStatus()
+    {
+        $tenantEmail = \Auth::guard('web')->user()->email;
+
+        $bookings = Booking::where('email', $tenantEmail)->get();
+
+        return view('house-requests', compact('bookings'));
+
     }
 }

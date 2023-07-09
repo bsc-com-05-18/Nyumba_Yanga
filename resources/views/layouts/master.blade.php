@@ -53,7 +53,7 @@
   @yield('styles')
 </head>
 
-<body class="g-sidenav-show  bg-white">
+<body class="g-sidenav-show  bg-white" style="display: flex; flex-direction: column; min-height: 100vh; margin: 0; padding: 0;">
   <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 bg-gradient-success" id="sidenav-main" style="background-color: #0CAF12;">
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
@@ -72,21 +72,29 @@
             </div>
             <span class="nav-link-text ms-1">Dashboard</span>
           </a>
-        </li>
+        </li> 
         <li class="nav-item">
-          <a class="nav-link text-white" href="myproperties">
-          <form action="/session" method="POST">
-             <input type="hidden" name="_token" value="{{csrf_token()}}">
-             <button class="btn btn-success" type="submit" id="checkout-live-button"><i class="fa fa-money"></i> Payments</button>
-         </form>
+          <a class="nav-link text-white " href="payment">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fa-sharp fa-solid fa-money-check-dollar"></i>
+            </div>
+            <span class="nav-link-text ms-1">Payments</span>
           </a>
-        </li>        
+        </li>      
         <li class="nav-item">
           <a class="nav-link text-white " href="maintenance-report_form">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="fa-sharp fa-solid fa-gears"></i>
             </div>
             <span class="nav-link-text ms-1">Maintenance</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="request-approval">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fa-sharp fa-solid fa-question"></i>
+            </div>
+            <span class="nav-link-text ms-1">House Requests</span>
           </a>
         </li>
         <li class="nav-item">
@@ -163,11 +171,12 @@
       </div>
     </nav>
     <!-- End Navbar -->
-    @yield('content')
-    
+    <div style="flex: 1;">
+        @yield('content')
+        </div>    
   <!--   Core JS Files   -->
   @yield('footer')
-  <footer class="main-footer">
+  <footer class="main-footer" style="flex-shrink: 0;">
     <hr>
         <div class="row">
             <div class="col-sm">

@@ -41,6 +41,24 @@ class User extends Authenticatable
     public function notifications(){
         return $this->hasMany(Notification::class);
     }
+    public function payments(){
+        return $this->hasMany(Payment::class, 'user_id');
+
+    }
+    public function bookings(){
+        return $this->hasMany(Booking::class, 'email', 'email');
+    }
+    public function requestNotifications(){
+        return $this->hasMany(BookNotifications::class);
+    }
+    public function assignmentHistory()
+{
+    return $this->hasMany(Assignment::class);
+}
+public function currentProperty()
+{
+    return $this->belongsTo(Assignment::class, 'user_id')->whereNull('end_date');
+}
     /**
      * The attributes that should be hidden for serialization.
      *

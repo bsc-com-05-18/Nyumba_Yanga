@@ -15,7 +15,12 @@ class MaintenanceReport extends Model
     }
 
     public function property(){
-        return $this->belongsTo(Property::class);
+        return $this->belongsTo(Property::class, 'property_id');
+    }
+
+    public function notification()
+    {
+        return $this->belongsTo(Notification::class, 'maintenance_report_id');
     }
 
 }

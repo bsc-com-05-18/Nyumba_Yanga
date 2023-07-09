@@ -50,7 +50,7 @@
   @yield('styles')
 </head>
 
-<body class="g-sidenav-show  bg-white">
+<body class="g-sidenav-show  bg-white" style="display: flex; flex-direction: column; min-height: 100vh; margin: 0; padding: 0;">
   <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 bg-gradient-success" id="sidenav-main" style="background-color: #0CAF12;">
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
@@ -79,6 +79,14 @@
           </a>
         </li>   
         <li class="nav-item">
+          <a class="nav-link text-white" href="check-payment">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fa-solid fa-square-plus"></i>
+            </div>
+            <span class="nav-link-text ms-1">Payments</span>
+          </a>
+        </li> 
+        <li class="nav-item">
           <a class="nav-link text-white" href="myproperties">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="fa-solid fa-house-chimney"></i>
@@ -89,11 +97,22 @@
         </li>        
         
         <li class="nav-item">
-          <a class="nav-link text-white " href="tenant">
+          <a class="nav-link text-white" href="tenant">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="fa-solid fa-users"></i>
             </div>
             <span class="nav-link-text ms-1">Tenants</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link text-white" href="booking-list">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+            <!-- <i class="fa-solid fa-history"></i> -->
+            <i class="fa-regular fa-clipboard"></i>
+            </div>
+            Bookings
+            <span class="badge badge-pill badge-danger">{{  \Auth::guard('landlord')->user()->unreadBookNotifications->count() }}</span>
           </a>
         </li>
         
@@ -107,7 +126,7 @@
           </a>
         </li>
         <li class="nav-item mt-3">
-          <a class="nav-link text-white " href="{{ route('landlord.logout') }}" onclick="event.preventDefault(); if(confirm('Are you sure you want to log out?'))
+          <a class="nav-link text-white" href="{{ route('landlord.logout') }}" onclick="event.preventDefault(); if(confirm('Are you sure you want to log out?'))
               document.getElementById('logout-form').submit();">
                   <form id="logout-form" action="{{ route('landlord.logout') }}" method="POST" class="d-none">
                       @csrf
@@ -172,11 +191,12 @@
       </div>
     </nav>
     <!-- End Navbar -->
-    @yield('content')
-    
+    <div style="flex: 1;">
+        @yield('content')
+        </div>    
   <!--   Core JS Files   -->
   @yield('footer')
-  <footer class="main-footer">
+  <footer class="main-footer" style="flex-shrink: 0;">
     <hr>
         <div class="row">
             <div class="col-sm">

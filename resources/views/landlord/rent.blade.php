@@ -37,23 +37,36 @@
             </div>
             <div class="card-body px-0 pb-2">
               <div class="table-responsive">
-                <table class="table align-items-center mb-0">
-                  <thead>
+              <table class="table table-striped">
+                <thead>
                     <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-uppercase opacity-7">Tenant</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-uppercase opacity-7 ps-2">property</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Amount</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
+                        <th>#</th>
+                        <th>Tenant Name</th>
+                        <th>Property</th>
+                        <th>Amount</th>
+                        <th>Date</th>
                     </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                
-                      </td>
-                    </tr>
+                </thead>
+                <tbody>
+                    @php 
+                    $i=1;
+                    @endphp
+                    @foreach ($payments as $payment )
+
+                        <tr>
+                            <td>{{$i++;}}</td>
+                            <td>{{$payment->user->name}} {{$payment->user->last_name}}</td>
+                            <td>{{$payment->property->title}}</td>
+                            <td>{{$payment->payment_amount}}</td>
+                            <td>{{$payment->created_at->diffForHumans() }}</td>
+                        </tr>
+
+                    @endforeach
                   </tbody>
                 </table>
+                <div class="d-flex justify-content-center">
+                {!! $payments->links() !!}
+            </div>
               </div>
             </div>        
           </div>
@@ -62,36 +75,6 @@
         </div>
         
     </div>
-    <div class="row mt-4">
-        <div class="col-lg-6 col-md-6 mt-2 mb-2">
-          <div class="card z-index-2 ">
-            <div class="card-header p-0 mt-n4 mx-3 z-index-2 bg-transparent">
-            <h6 class="mb-0 text-center text-uppercase">Area Statistics</h6>
-            </div>
-            <div class="card-body">
-              <div class="bg-gray-400 shadow-primary border-radius-lg py-3 pe-1">
-                <div class="chart">
-                  <canvas id="chart-bars" class="chart-canvas" height="170"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6 col-md-6 mt-2 mb-2">
-          <div class="card z-index-2 ">
-            <div class="card-header p-0 mt-n4 mx-3 z-index-2 bg-transparent">
-            <h6 class="mb-0 text-center text-uppercase">rent graphs</h6>
-            </div>
-            <div class="card-body">
-              <div class="bg-gray-400 shadow-primary border-radius-lg py-3 pe-1">
-                <div class="chart">
-                  <canvas id="chart-line" class="chart-canvas" height="170"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 </div>
 @endsection
 
@@ -105,173 +88,7 @@
   <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
   <script src="../assets/js/plugins/chartjs.min.js"></script>
-  <script>
-    var ctx = document.getElementById("chart-bars").getContext("2d");
-
-    new Chart(ctx, {
-      type: "bar",
-      data: {
-        labels: ["M", "T", "W", "T", "F", "S", "S"],
-        datasets: [{
-          label: "Sales",
-          tension: 0.4,
-          borderWidth: 0,
-          borderRadius: 4,
-          borderSkipped: false,
-          backgroundColor: "rgba(12, 175, 18, .8)",
-          data: [50, 20, 10, 22, 50, 10, 40],
-          maxBarThickness: 6
-        }, ],
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            display: false,
-          }
-        },
-        interaction: {
-          intersect: false,
-          mode: 'index',
-        },
-        scales: {
-          y: {
-            grid: {
-              drawBorder: false,
-              display: true,
-              drawOnChartArea: true,
-              drawTicks: false,
-              borderDash: [5, 5],
-              color: "rgba(12, 175, 18, .8)"
-            },
-            ticks: {
-              suggestedMin: 0,
-              suggestedMax: 500,
-              beginAtZero: true,
-              padding: 10,
-              font: {
-                size: 14,
-                weight: 300,
-                family: "Roboto",
-                style: 'normal',
-                lineHeight: 2
-              },
-              color: "#fff"
-            },
-          },
-          x: {
-            grid: {
-              drawBorder: false,
-              display: true,
-              drawOnChartArea: true,
-              drawTicks: false,
-              borderDash: [5, 5],
-              color: "rgba(12, 175, 18, .8)"
-            },
-            ticks: {
-              display: true,
-              color: '#f8f9fa',
-              padding: 10,
-              font: {
-                size: 14,
-                weight: 300,
-                family: "Roboto",
-                style: 'normal',
-                lineHeight: 2
-              },
-            }
-          },
-        },
-      },
-    });
-
-
-    var ctx2 = document.getElementById("chart-line").getContext("2d");
-
-    new Chart(ctx2, {
-      type: "line",
-      data: {
-        labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-        datasets: [{
-          label: "Mobile apps",
-          tension: 0,
-          borderWidth: 0,
-          pointRadius: 5,
-          pointBackgroundColor: "rgba(255, 255, 255, .8)",
-          pointBorderColor: "transparent",
-          borderColor: "rgba(12, 175, 18, .8)",
-          borderColor: "rgba(12, 175, 18, .8)",
-          borderWidth: 4,
-          backgroundColor: "transparent",
-          fill: true,
-          data: [50, 40, 300, 320, 500, 350, 200, 230, 500],
-          maxBarThickness: 6
-
-        }],
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            display: false,
-          }
-        },
-        interaction: {
-          intersect: false,
-          mode: 'index',
-        },
-        scales: {
-          y: {
-            grid: {
-              drawBorder: false,
-              display: true,
-              drawOnChartArea: true,
-              drawTicks: false,
-              borderDash: [5, 5],
-              color: "rgba(12, 175, 18, .8)"
-            },
-            ticks: {
-              display: true,
-              color: '#f8f9fa',
-              padding: 10,
-              font: {
-                size: 14,
-                weight: 300,
-                family: "Roboto",
-                style: 'normal',
-                lineHeight: 2
-              },
-            }
-          },
-          x: {
-            grid: {
-              drawBorder: false,
-              display: false,
-              drawOnChartArea: false,
-              drawTicks: false,
-              borderDash: [5, 5]
-            },
-            ticks: {
-              display: true,
-              color: '#f8f9fa',
-              padding: 10,
-              font: {
-                size: 14,
-                weight: 300,
-                family: "Roboto",
-                style: 'normal',
-                lineHeight: 2
-              },
-            }
-          },
-        },
-      },
-    });
-
-    
-  </script>
+  
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->

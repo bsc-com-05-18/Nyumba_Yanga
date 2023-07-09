@@ -89,7 +89,18 @@
                         @endif
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-12 mt-3">
+                <div class="col-lg-6 col-md-12">
+                    <div class="input-group input-group-outline my-3">
+                        <input type="number" name="quantity" id="quantity" placeholder="Quantity" class="form-control{{  $errors->has('quantity') ? ' is-invalid' : '' }}" required>
+                        @if ($errors->has('quantity'))
+                        <div class="invalid-feedback">{{  $errors->first('quantity') }}</div>
+                        @endif
+                    </div>
+                </div>
+               <!--  -->
+            </div>
+            <div class="row">
+            <div class="col-lg-6 col-md-12 mt-3">
                     <div class="input-group input-group-outline mb-3">
                         <input type="text" name="address" id="address" placeholder="Address" class="form-control{{  $errors->has('address') ? ' is-invalid' : '' }}" required>
                         @if ($errors->has('address'))
@@ -97,8 +108,7 @@
                         @endif
                     </div>
                 </div>
-            </div>
-            <div class="row">
+                <!--  -->
                 <div class="col-lg-6 col-md-12">
                     <div class="input-group input-group-outline my-3">
                         <select class="form-select px-3 text-muted" id="type" name="type" aria-label="Default select example" required>
@@ -112,7 +122,9 @@
                             @endif
                         </select>
                     </div>
-                </div>
+                </div>                
+            </div>
+            <div class="row">
                 <div class="col-lg-6 col-md-12">
                     <div class="input-group input-group-outline my-3">
                         <select class="form-select px-3 text-muted" id="status" name="status" aria-label="Default select example" required>
@@ -125,9 +137,6 @@
                         </select>
                     </div>
                 </div>
-                
-            </div>
-            <div class="row">
                 <div class="col-lg-6 col-md-12">
                     <div class="input-group input-group-outline my-3">
                         <input required type="file" name="images[]" id="images" class="form-control{{  $errors->has('images') ? ' is-invalid' : '' }}" multiple required>

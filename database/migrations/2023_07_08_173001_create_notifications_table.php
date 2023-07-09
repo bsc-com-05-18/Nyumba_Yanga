@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMaintenanceReportsTable extends Migration
+class CreateNotificationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateMaintenanceReportsTable extends Migration
      */
     public function up()
     {
-        Schema::create('maintenance_reports', function (Blueprint $table) {
+        Schema::create('notifications', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('maintenance_report_id')->references('id')->on('maintenance_reports')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('property_id')->references('id')->on('properties')->onUpdate('cascade')->onDelete('cascade');
-            $table->text('description');
-            $table->string('image')->nullable();
+            $table->foreignId('landlord_id')->references('id')->on('landlords')->onUpdate('cascade')->onDelete('cascade');
+            $table->text('message');
+            $table->boolean('read')->default(false);
             $table->timestamps();
         });
     }
@@ -30,6 +32,6 @@ class CreateMaintenanceReportsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('maintenance_reports');
+        Schema::dropIfExists('notifications');
     }
 }

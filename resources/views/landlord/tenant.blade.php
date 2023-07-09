@@ -11,14 +11,19 @@
 @endsection
 
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid" style="min-height: 75vh; margin: 0; padding: 0;">
   <div class="row">
   <div class="container-fluid">
   @if (session('success'))
   <div class="alert alert-success" role="alert">
       {{ session('success') }}
   </div>
+  @elseif (session('error'))
+  <div class="alert alert-danger" role="alert">
+      {{ session('error') }}
+  </div>
   @endif
+  @if ($hasAvailableProperties)
   <form method="POST" action="assign-tenant">
     @csrf
 
@@ -30,13 +35,14 @@
     </select>
 
     <label for="tenant">Select Tenant:</label>
-    <select name="user_id" id="tenant">
-      @foreach($tenants as $tenant)
-      <option value="{{ $tenant->id }}">{{ $tenant->name }}  {{ $tenant->last_name }}</option>
+    <select name="user_id" id="user_id">
+      @foreach($tenants as $tenantId => $tenantEmail)
+      <option value="{{ $tenantId }}">{{ $tenantEmail }}</option>
       @endforeach
     </select>
     <button type="submit" class="btn bg-gradient-success w-120 my-4 mb-2">Assign</button>
   </form>
+  @endif
   </div>
   <!--  -->
     <div class="row mb-4">
@@ -48,16 +54,8 @@
                   <h6 class="text-uppercase">my tenants</h6>
                 </div>
                 <div class="col-lg-6 col-5 my-auto text-end">
-                  <div class="dropdown float-lg-end pe-4">
-                    <a class="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown" aria-expanded="false">
-                      <i class="fa fa-ellipsis-v text-secondary"></i>
-                    </a>
-                    <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">
-                      <li><a class="dropdown-item border-radius-md" href="javascript:;">Action</a></li>
-                      <li><a class="dropdown-item border-radius-md" href="javascript:;">Another action</a></li>
-                      <li><a class="dropdown-item border-radius-md" href="javascript:;">Something else here</a></li>
-                    </ul>
-                  </div>
+                <a href="tenant-history" class="btn btn-warning float-end mr-5">Tenant History</a>
+
                 </div>
               </div>
             </div>
@@ -71,21 +69,41 @@
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-uppercase opacity-7 ps-2">property</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">email address</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">phone number</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">action</th>
                     </tr>
                   </thead>
                   <tbody>
                   @foreach ($houses as $house)
-                  @foreach ($house->assignments as $assignment)
                     <tr>
-                      <td>{{ $assignment->user->name }} {{ $assignment->user->last_name }}</td>
+                      @if($house->user)
+                      <td>{{ $house->user->user->name }} {{ $house->user->user->last_name }}</td>
                       <td>{{ $house->title }}</td>
-                      <td>{{ $assignment->user->email }}</td>
-                      <td>{{ $assignment->user->phone }}</td>
-
+                      <td>{{ $house->user->user->email }}</td>
+                      <td>{{ $house->user->user->phone }}</td>
+                      <td>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#unassignModal{{$house->user->user->id}}">Unassign Tenant</button>
+                      </td>
                      
                     </tr>
-                    
-                    @endforeach
+                     <!-- UNASSIGN MODAL ---->
+                     <div class="modal fade" id="unassignModal{{$house->user->user->id}}" tabindex="-1" role="dialog" aria-labelledby="unassignModalLabel{{$house->user->user->id}}" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="unassignModalLabel{{$house->user->user->id}}">Unassign Tenant</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Are you sure you want to unassign this tenant from this property?</p>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                  <a href="{{ route('unassign.tenant', ['tenantId' => $house->user->user->id]) }}" class="btn btn-danger">Unassign Tenant</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
                     @endforeach
                   </tbody>
                 </table>

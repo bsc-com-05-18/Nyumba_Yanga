@@ -74,6 +74,7 @@ class MaintenanceReportController extends Controller
 
         if ($landlord) {
             $notification = new Notification();
+            $notification->maintenance_report_id = $maintenanceReport->id;
             $notification->user_id = $tenant->id;
             $notification->landlord_id = $landlord;
             $notification->property_id = $propertyId;

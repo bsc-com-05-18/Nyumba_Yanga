@@ -5,7 +5,10 @@ use App\Http\Controllers\Landlord\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Property;
+use App\Models\BookNotifications;
 use App\Models\Landlord;
+use App\Models\User;
+use App\Models\Assignment;
 
 
 class PropertyController extends Controller
@@ -99,10 +102,9 @@ class PropertyController extends Controller
         return redirect()->route('landlord.myproperties');
     }
 
-    public function viewImages($id){
+    public function propertyDetails(Property $property){
 
-        $properties = Property::where('landlord_id', \Auth::guard('landlord')->user()->id)->get();
-        return view('landlord.property-images',compact('properties'));
+        return view('landlord.propertyDetails',compact('property'));
     }
     
 

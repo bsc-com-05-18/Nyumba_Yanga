@@ -11,7 +11,7 @@
 @endsection
 
 @section('content')
-<div class="container text-muted mt-5">
+<div class="container-fluid mt-5" style="min-height: 70vh; margin: 0; padding: 0;">
     <div class="content-wrapper">
         <div class="row justify-content-center">
             <div class="col-8">
@@ -40,14 +40,7 @@
                         <button type="submit" class="btn btn-warning mx-3">Submit Report</button>
                     </form>
                 </div>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
+              
             </div>
         </div>
     </div>

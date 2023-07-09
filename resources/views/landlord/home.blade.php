@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid" style="min-height: 75vh; margin: 0; padding: 0;">
       <div class="row mt-1 justify-content-center">
         <div class="col-sm-3 mt-4 mb-1">
           <div class="card z-index-2 ">
@@ -21,7 +21,7 @@
             </div>
             <div class="card-body">
             <div class="d-flex align-items-center justify-content-center">
-                <h6 class="mb-0 text-uppercase">properties</h6>
+                <h6 class="mb-2 text-uppercase">properties</h6>
                 <h6 class="ms-auto">{{ $numProperties }}</h6>
               </div>
               
@@ -37,7 +37,7 @@
             </div>
             <div class="card-body">
               <div class="d-flex align-items-center justify-content-center">
-                <h6 class="mb-0 text-uppercase">payments</h6>
+                <h6 class="mb-2 text-uppercase">payments</h6>
                 <!-- <h2 class="ms-auto">MWK5,000.00</h2> -->
               </div>
               
@@ -54,8 +54,8 @@
             </div>
             <div class="card-body">
             <div class="d-flex align-items-center justify-content-center">
-                <h6 class="mb-0 text-uppercase">maintenance</h6>
-                <!-- <h2 class="ms-auto">5</h2> -->
+                <h6 class="mb-2 text-uppercase">maintenance</h6>
+                <h6 class="ms-auto">{{  \Auth::guard('landlord')->user()->unreadBookNotifications->count() }}</h6>
               </div>
               
             </div>
@@ -70,7 +70,8 @@
             </div>
             <div class="card-body">
             <div class="d-flex align-items-center justify-content-center">
-                <h6 class="mb-0 text-uppercase">tenants</h6>
+                <h6 class="mb-2 text-uppercase">tenants</h6>
+                <h6 class="ms-auto">{{ $tenantCount }}</h6>
               </div>
               
             </div>
@@ -81,13 +82,7 @@
 
       </div>
 </div>
-<br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br><br>
+
 @endsection
 
 @section('footer')

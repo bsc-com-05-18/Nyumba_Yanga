@@ -37,7 +37,17 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-8 col-lg-6">
+                                    <div class="col-md-8 col-lg-2">
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" name="min_price" placeholder="Enter Minimum Price" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 col-lg-2">
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" name="max_price" placeholder="Enter Maximum Price" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 col-lg-2">
                                         <div class="form-group">
                                             <input type="text" class="form-control" name="location" placeholder="Enter Location" required>
                                         </div>

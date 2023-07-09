@@ -11,12 +11,20 @@
 @endsection
 
 @section('content')
+<div class="container-fluid" style="min-height: 75vh; margin: 0; padding: 0;">
 <h5>Notifications</h5>
 <ul class="list-unstyled">
     @forelse ($notifications as $notification)
-        <li>
-           <a href="{{ url('notification/'.$notification->id) }}" style="color: {{ $notification->read ? 'gray' : '#0caf12' }};">
-                {{ $notification->message }} {{ $notification->user->name }} {{ $notification->user->last_name }} For Property {{ $notification->property->title }}
+        <li class="py-2 px-2" style="background-color: #EFEDED">
+           <a href="{{ url('notification/'.$notification->id) }}" style="color: {{ $notification->read ? 'gray' : '#0caf12' }}">
+            <div class="row">
+                <div class="col-md-9">
+                    {{ $notification->message }} {{ $notification->user->name }} {{ $notification->user->last_name }} For Property {{ $notification->property->title }}
+                </div>
+                <div class="col-md-3">
+                Received {{ $notification->created_at->diffForHumans() }}
+                </div>
+            </div>
             </a>
         </li>
         <br>
@@ -24,6 +32,10 @@
         <p>No notifications yet</p>
     @endforelse
 </ul>
+    <div class="d-flex justify-content-center">
+        {!! $notifications->links() !!}
+    </div>
+</div>
 
 @endsection
 

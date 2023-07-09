@@ -30,7 +30,7 @@ class Landlord extends Authenticatable
     public function properties(){
         return $this->hasMany(Property::class);
     }
-    public function tenants(){
+    public function users(){
         return $this->hasMany(User::class);
     }
     public function bookings(){
@@ -48,6 +48,12 @@ class Landlord extends Authenticatable
 
     public function unreadNotifications(){
         return $this->hasMany(Notification::class)->where('read', false);
+    }
+    public function requestNotifications(){
+        return $this->hasMany(BookNotifications::class);
+    }
+    public function unreadBookNotifications(){
+        return $this->hasMany(BookNotifications::class)->where('read', false);
     }
     /**
      * The attributes that should be hidden for serialization.

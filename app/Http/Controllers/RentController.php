@@ -6,6 +6,8 @@ use App\Models\Rating;
 use App\Models\Booking;
 use App\Models\Landlord;
 use App\Notifications\BookingNotification;
+use App\Models\BookNotifications;
+
 
 
 use Illuminate\Http\Request;
@@ -46,6 +48,17 @@ class RentController extends Controller
 
         $landlord = Landlord::first();
         $landlord->notify(new BookingNotification($booking));
+
+        // Sending notification to landlord
+        $landlordId = $booking->property->landlord->id;
+        $message = 'New booking received for Property ' . $booking->property->title . ' from ' . $booking->full_name;
+
+        $notification = BookNotifications::create([
+            'booking_id' => $booking->id,
+            'property_id' => $booking->property_id,
+            'landlord_id' => $landlordId,
+            'message' => $message,
+        ]);
          
         return redirect()->back()->with('success', 'Tenancy request submitted succefully!');
     }

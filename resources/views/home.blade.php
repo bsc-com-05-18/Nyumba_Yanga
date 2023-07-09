@@ -11,7 +11,7 @@
 @endsection
 
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid" style="min-height: 75vh; margin: 0; padding: 0;">
       <div class="row mt-1 justify-content-center">
       <div class="col-sm-3 mt-4 mb-1">
           <div class="card z-index-2  ">
@@ -83,13 +83,6 @@
       <div class="row mt-4 justify-content-center">
 
       </div>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br><br>
       
 </div>
 @endsection
